@@ -9,9 +9,9 @@ CreepLitKG is an LLM+Ontology-driven pipeline and knowledge graph, that converts
 
 | Resource | Link |
 |---|---|
-| RDF dataset (MaterialDigital Dataportal) | [dataportal.material-digital.de/dataset/literature-extracted-creep-data](https://dataportal.material-digital.de/dataset/literature-extracted-creep-data) |
-| SPARQL endpoint | `https://dataportal.material-digital.de/dataset/8895723b-3ff0-4906-84ce-872d66b40a6e/fuseki/$/sparql` |
-| Guided query UI (Sparklis) | [Open Sparklis on the endpoint](https://dataportal.material-digital.de/sparklis/?title=literature-extracted-creep-data&endpoint=https%3A//dataportal.material-digital.de/dataset/8895723b-3ff0-4906-84ce-872d66b40a6e/fuseki/%24/sparql&entity_lexicon_select=http%3A//www.w3.org/2000/01/rdf-schema%23label&concept_lexicons_select=http%3A//www.w3.org/2000/01/rdf-schema%23label) |
+| RDF dataset (MaterialDigital Dataportal) | [https://dataportal.material-digital.de/dataset/creep_literature_knowledge_graph](https://dataportal.material-digital.de/dataset/creep_literature_knowledge_graph) |
+| SPARQL endpoint | `https://dataportal.material-digital.de/dataset/a5b4edc4-43ef-44ff-a386-5d1f6fbbc439/fuseki/$/sparql` |
+| Guided query UI (Sparklis) | [Open Sparklis on the endpoint](https://dataportal.material-digital.de/sparklis/?title=creep_literature_knowledge_graph&endpoint=https%3A//dataportal.material-digital.de/dataset/a5b4edc4-43ef-44ff-a386-5d1f6fbbc439/fuseki/%24/sparql&entity_lexicon_select=http%3A//www.w3.org/2000/01/rdf-schema%23label&concept_lexicons_select=http%3A//www.w3.org/2000/01/rdf-schema%23label) |
 | Source code | [github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph](https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph) |
 
 ## What is in the graph?
@@ -25,43 +25,4 @@ The knowledge graph contains **creep datasets extracted from literature**. Each 
 - the **test conditions** (testing standard, temperature, initial stress),
 - and the **creep results** (stress rupture time, percentage elongation after creep fracture, steady-state creep rate, stress exponent, activation energy, and further ISO 204 extension parameters).
 
-All entities are typed with classes from the **Creep Testing Ontology (CTO)** and the ontologies it reuses (BFO, RO, IAO, OBI, PMDco, NFDIcore, MWO), with measurement units from **QUDT**. The terminology follows *ISO 204:2018 — Metallic materials — Uniaxial creep testing in tension*. See [Data Model & Ontologies](ontology.md) for details.
 
-Instance IRIs are minted in the namespace:
-
-```
-https://nfdi.fiz-karlsruhe.de/matwerk/msekg/
-```
-
-## How is it built?
-
-A fully automated, reproducible four-step pipeline transforms spreadsheet-collected literature metadata into validated RDF:
-
-```
-creep paper → (LLM4CreepLitKG / human) → spreadsheet → JSON → YARRRML/RML → RDF → SHACL → SPARQL endpoint
-```
-
-See the [Pipeline](pipeline.md) page for the full architecture, and [SPARQL Access](sparql.md) for ready-to-run competency question queries.
-
-## Quick start: ask the graph a question
-
-Paste this into the [Sparklis/YASGUI UI](https://dataportal.material-digital.de/sparklis/?title=literature-extracted-creep-data&endpoint=https%3A//dataportal.material-digital.de/dataset/8895723b-3ff0-4906-84ce-872d66b40a6e/fuseki/%24/sparql&entity_lexicon_select=http%3A//www.w3.org/2000/01/rdf-schema%23label&concept_lexicons_select=http%3A//www.w3.org/2000/01/rdf-schema%23label) or POST it to the endpoint:
-
-```sparql
-PREFIX mwo: <http://purls.helmholtz-metadaten.de/mwo/>
-PREFIX co:  <https://w3id.org/pmd/co/>
-
-# Which materials have been creep tested?
-SELECT DISTINCT ?material WHERE {
-  ?id a mwo:MWO_0001099 ;        # material identifier
-      co:PMD_0000006 ?material .  # has value
-}
-```
-
-## Contact
-
-**Dr. Hossein Beygi Nasrabadi**
-FIZ Karlsruhe – Leibniz Institute for Information Infrastructure GmbH
-[Hossein.Beygi_Nasrabadi@fiz-Karlsruhe.de](mailto:Hossein.Beygi_Nasrabadi@fiz-Karlsruhe.de)
-
-How to cite this work is described on the [About & Citation](about.md) page.

@@ -2,10 +2,10 @@
 
 ## Endpoint
 
-The knowledge graph is hosted on the [MaterialDigital Dataportal](https://dataportal.material-digital.de/dataset/literature-extracted-creep-data) with a **public Fuseki SPARQL endpoint** (anonymous read access):
+The knowledge graph is hosted on the [MaterialDigital Dataportal](https://dataportal.material-digital.de/dataset/creep_literature_knowledge_graph) with a **public Fuseki SPARQL endpoint** (anonymous read access):
 
 ```
-https://dataportal.material-digital.de/dataset/8895723b-3ff0-4906-84ce-872d66b40a6e/fuseki/$/sparql
+https://dataportal.material-digital.de/dataset/a5b4edc4-43ef-44ff-a386-5d1f6fbbc439/fuseki/$/sparql
 ```
 
 The endpoint supports SPARQL 1.1 querying and reasoning over the SHACL-validated graph.
@@ -14,7 +14,7 @@ The endpoint supports SPARQL 1.1 querying and reasoning over the SHACL-validated
 
 | Interface | Notes |
 |---|---|
-| [**Sparklis** (guided query builder)](https://dataportal.material-digital.de/sparklis/?title=literature-extracted-creep-data&endpoint=https%3A//dataportal.material-digital.de/dataset/8895723b-3ff0-4906-84ce-872d66b40a6e/fuseki/%24/sparql&entity_lexicon_select=http%3A//www.w3.org/2000/01/rdf-schema%23label&concept_lexicons_select=http%3A//www.w3.org/2000/01/rdf-schema%23label) | Build queries in natural language, pre-configured for this endpoint with `rdfs:label` lexicons |
+| [**Sparklis** (guided query builder)](https://dataportal.material-digital.de/sparklis/?title=creep_literature_knowledge_graph&endpoint=https%3A//dataportal.material-digital.de/dataset/a5b4edc4-43ef-44ff-a386-5d1f6fbbc439/fuseki/%24/sparql&entity_lexicon_select=http%3A//www.w3.org/2000/01/rdf-schema%23label&concept_lexicons_select=http%3A//www.w3.org/2000/01/rdf-schema%23label) | Build queries in natural language, pre-configured for this endpoint with `rdfs:label` lexicons |
 | PMD Dataportal Query UI | Built-in YASGUI-style editor on the dataset page |
 | Programmatic access | HTTP `POST` (Form URL Encoded, `query=` key) works from any client, e.g. `curl`, Python `SPARQLWrapper`, or [ReqBin](https://reqbin.com) |
 
@@ -29,20 +29,8 @@ curl -X POST \
   'https://dataportal.material-digital.de/dataset/8895723b-3ff0-4906-84ce-872d66b40a6e/fuseki/$/sparql'
 ```
 
-## Common prefixes
 
-All queries below assume:
-
-```sparql
-PREFIX obo:  <http://purl.obolibrary.org/obo/>
-PREFIX co:   <https://w3id.org/pmd/co/>
-PREFIX cto:  <https://w3id.org/pmd/cto/>
-PREFIX mwo:  <http://purls.helmholtz-metadaten.de/mwo/>
-PREFIX nfdi: <https://nfdi.fiz-karlsruhe.de/ontology/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-```
-
-## Competency questions
+## Example Competency Questions
 
 ### CQ1 — From which literature sources (publications) does the creep data originate?
 
@@ -162,5 +150,3 @@ SELECT ?sample ?ruptureTime ?creepRate WHERE {
 }
 ```
 
-!!! info "Numeric vs. text values"
-    Cleanly measured quantities (temperature, stress, grain size) expose `obo:OBI_0001937` (numeric, `xsd:double`) plus a QUDT unit via `obo:IAO_0000039`. Values reported with uncertainty (e.g. `159.74 ±19.18 h`) are preserved verbatim under `obo:OBI_0002135` as text — filter or post-process accordingly.

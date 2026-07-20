@@ -69,7 +69,7 @@ The `./map.sh` script runs four steps in one command:
 
 ```bibtex
 @software{CreepLitKG,
-  author  = {Beygi Nasrabadi, Hossein},
+  author  = {Beygi Nasrabadi, Hossein and Molaei, Soheil and Bayani, AmirHossein and Norouzi, Ebrahim and Waitelonis, J{\"o}rg and Sack, Harald},
   title   = {Creep Literature Knowledge Graph (CreepLitKG)},
   url     = {https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph},
   version = {1.0.0},

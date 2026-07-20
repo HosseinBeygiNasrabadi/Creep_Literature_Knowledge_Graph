@@ -6,8 +6,18 @@ authors:
     given-names: Hossein
     email: hossein.beygi.nasrabadi@fiz-karlsruhe.de
     affiliation: "FIZ Karlsruhe – Leibniz Institute for Information Infrastructure"
+  - family-names: Molaei
+    given-names: Soheil
+  - family-names: Bayani
+    given-names: AmirHossein
+  - family-names: Norouzi
+    given-names: Ebrahim
+  - family-names: Waitelonis
+    given-names: Jörg
+  - family-names: Sack
+    given-names: Harald
 repository-code: "https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph"
-url: "https://https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph"
+url: "https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/"
 license: CC0-1.0
 version: "1.0.0"
 date-released: "2026-07-20"

@@ -19,7 +19,7 @@ If you use CreepLitKG in your research, please cite:
 
 ```bibtex
 @software{CreepLitKG,
-  author  = {Beygi Nasrabadi, Hossein},
+  author  = {Beygi Nasrabadi, Hossein and Molaei, Soheil and Bayani, AmirHossein and Norouzi, Ebrahim and Waitelonis, J{\"o}rg and Sack, Harald},
   title   = {Creep Literature Knowledge Graph (CreepLitKG)},
   url     = {https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph},
   version = {1.0.0},

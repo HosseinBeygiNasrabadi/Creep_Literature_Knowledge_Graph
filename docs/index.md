@@ -2,9 +2,8 @@
 
 **Version 1.0.0**
 
-CreepLitKG is an LLM+Ontology-driven pipeline and knowledge graph, developed within the [NFDI-MatWerk](https://nfdi-matwerk.de/) project, that converts creep test metadata extracted from scientific literature into ontology-grounded RDF. It makes experimental creep data reported in publications — material identity, chemical composition, heat treatment history, microstructural features, test conditions, and creep results — findable, machine-readable, and queryable through a public SPARQL endpoint, and federates it into the MatWerk Knowledge Graph (MSE-KG).
+CreepLitKG is an LLM+Ontology-driven pipeline and knowledge graph, that converts creep test metadata extracted from scientific literature into ontology-grounded RDF. It makes experimental creep data reported in publications — material identity, chemical composition, heat treatment history, microstructural features, test conditions, and creep results — findable, machine-readable, and queryable through a public SPARQL endpoint, and federates it into the MatWerk Knowledge Graph (MSE-KG).
 
-![CreepLitKG pipeline overview](assets/pipeline.png)
 
 ## Live resources
 

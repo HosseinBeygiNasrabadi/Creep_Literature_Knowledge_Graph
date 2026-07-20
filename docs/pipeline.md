@@ -17,7 +17,7 @@ new creep paper
    → harvested into MatWerk-KG
 ```
 
-Metadata is currently extracted from publications manually into a structured spreadsheet template. The **LLM4CreepLitKG** component (under development) will automate this extraction step; its output will always be validated by a human against the same spreadsheet template before entering the pipeline, so the downstream steps are identical for both extraction routes.
+Metadata is currently extracted from publications manually into a structured spreadsheet template. The **LLM4CreepLitKG** component will automate this extraction step; its output will always be validated by a human against the same spreadsheet template before entering the pipeline, so the downstream steps are identical for both extraction routes.
 
 ## The four-step `map.sh` pipeline
 
@@ -44,23 +44,6 @@ The Dockerized `rmlio/rmlmapper-java:v7.3.3` executes the RML rules over the JSO
 
 Five SHACL shapes in the `shapes/` folder are executed against the output. The runner loops over all `shapes/shape*.ttl` files so every shape is checked, and the script exits non-zero on any violation — a defective graph is never mistaken for a successful run and never loaded into the triple store.
 
-## Repository structure
-
-```
-Creep_Literature_Knowledge_Graph/
-├── creep_literature_spreadsheet.xlsm   # extracted metadata (single header-row template)
-├── xlsm2json.py                        # spreadsheet → JSON converter (no ontology logic)
-├── creep_literature_metadata.JSON      # intermediate JSON array (one object per row)
-├── creep_literature_mapping.yaml       # YARRRML mapping (all semantics live here)
-├── temp_rml.ttl                        # generated RML rules (intermediate)
-├── creep_literature_rdf.ttl            # final RDF output
-├── cto.ttl                             # Creep Testing Ontology (authoritative IRI source)
-├── map.sh                              # end-to-end pipeline runner
-├── shapes/                             # SHACL shapes (shape*.ttl)
-├── LLM4CreepLitKG/                     # LLM-based metadata extraction tool (in progress)
-└── docs/                               # this documentation
-```
-
 ## Running it yourself
 
 **Requirements:** `python3` with `openpyxl` and `pyshacl`, and Docker (the YARRRML parser and RML mapper run as containers, so no local Java/Node installation is needed).
@@ -68,21 +51,7 @@ Creep_Literature_Knowledge_Graph/
 ```bash
 # default spreadsheet (creep_literature_spreadsheet.xlsm)
 ./map.sh
-
-# or a specific spreadsheet following the same template
-./map.sh my_sheet.xlsm
 ```
-
-!!! note "Platform notes"
-    On Apple Silicon Macs, Docker runs the images under amd64 emulation; the resulting platform warnings are harmless. If your working directory path contains spaces, the script's quoted `"$(pwd)"` volume mounts already handle this.
-
-## Spreadsheet template conventions
-
-- **Row 1** is a single machine-readable header row; data rows follow from row 2.
-- The `ID` column is **mandatory and unique** per row — it drives IRI minting.
-- Quantities use the `number unit` cell format (`625 MPa`, `170 µm`); there are no separate unit columns.
-- Empty cells mean "not reported" and simply produce no triples.
-- A new spreadsheet column is auto-converted (header → snake_case key) and only needs a matching mapping block in the YARRRML file — no code changes.
 
 ## Design principles
 
@@ -92,4 +61,3 @@ Creep_Literature_Knowledge_Graph/
 4. **Validation as a gate** — SHACL conformance is a hard requirement before any triple-store load.
 5. **Text-literal fallback** — values that cannot be cleanly parsed as a number plus unit (uncertainties, ranges, qualitative descriptions) are preserved verbatim.
 
-This pipeline method is reusable across other MSE use cases and is applied in the umbrella repository *RDFConvertors for MatWerk-KG* (creep reference dataset IUC02, crystal plasticity constitutive model metadata IUC07, literature-extracted creep metadata, MatWerk metadata profile in AIMS, and Vickers hardness data).

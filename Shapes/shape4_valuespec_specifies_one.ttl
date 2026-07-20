@@ -1,0 +1,16 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix :    <https://nfdi.fiz-karlsruhe.de/matwerk/msekg/shapes/> .
+
+### Shape 4: Every scalar value specification (OBI_0001931) must specify the
+### value of (OBI_0001927) exactly one quality/entity, referenced by IRI
+:ValueSpecificationTargetShape
+  a sh:NodeShape ;
+  sh:targetClass obo:OBI_0001931 ;
+  sh:property [
+    sh:path obo:OBI_0001927 ;          # specifies value of
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:message "A scalar value specification must specify the value of exactly one quality/entity (IRI)." ;
+  ] .

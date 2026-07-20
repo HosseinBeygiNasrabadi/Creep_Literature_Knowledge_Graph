@@ -1,0 +1,188 @@
+[
+  {
+    "id": "10.1016_j.msea.2008.04.097_HT1",
+    "doi": "https://doi.org/10.1016/j.msea.2008.04.097",
+    "material_name": {
+      "text": "Inconel 718",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "chemical_composition": {
+      "text": "wt.%: C 0.04, Mn 0.09, Fe 18.64, S 0.0001, Si 0.07, Cu 0.17, Ni 53.09, Cr 18.11, Al 0.53, Ti 0.95, Co 0.21, Mo 3.03, Nb 5.05, Ta 0.01, P 0.009, B 0.003, Pb 0.1 ppm, Bi <0.1 ppm, Se <0.1 ppm, Nb + Ta 5.06",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "sample_id": {
+      "text": "HT1",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "processing_method": {
+      "text": "DUVAC (VIM electrode and VAR ingot) processes",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "solutionizing": {
+      "text": "1095 C, 1 h/AC",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "aging": {
+      "text": "955 C, 1 h/AC + 720 C, 8 h/FC 57 K/h to 620 C, 8 h/AC",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "grain_size": {
+      "value": 170.0,
+      "unit": "μm",
+      "unit_iri": "http://qudt.org/vocab/unit/MicroM",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "test_standard": {
+      "text": "ASTM E 8M-94a",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "temperature": {
+      "value": 650.0,
+      "unit": "°C",
+      "unit_iri": "http://qudt.org/vocab/unit/DEG_C",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "initial_stress": {
+      "value": 625.0,
+      "unit": "Mpa",
+      "unit_iri": "http://qudt.org/vocab/unit/MegaPA",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "creep_rupture_time": {
+      "text": "159.74 ±19.18 h",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "percentage_elongation_after_creep_fracture": {
+      "text": "1.1542 ±0.0577%",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    },
+    "steady_state_creep_rate": {
+      "text": "0.96 ×10−4 ±5.16×10−6",
+      "id": "10.1016_j.msea.2008.04.097_HT1"
+    }
+  },
+  {
+    "id": "10.1016_j.msea.2008.04.097_HT2",
+    "doi": "https://doi.org/10.1016/j.msea.2008.04.097",
+    "material_name": {
+      "text": "Inconel 718",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "chemical_composition": {
+      "text": "wt.%: C 0.04, Mn 0.09, Fe 18.64, S 0.0001, Si 0.07, Cu 0.17, Ni 53.09, Cr 18.11, Al 0.53, Ti 0.95, Co 0.21, Mo 3.03, Nb 5.05, Ta 0.01, P 0.009, B 0.003, Pb 0.1 ppm, Bi <0.1 ppm, Se <0.1 ppm, Nb + Ta 5.06",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "sample_id": {
+      "text": "HT2",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "processing_method": {
+      "text": "DUVAC (VIM electrode and VAR ingot) processes",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "solutionizing": {
+      "text": "1095 C, 1 h/AC",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "aging": {
+      "text": "no aging condition 955 C",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "grain_size": {
+      "value": 160.0,
+      "unit": "μm",
+      "unit_iri": "http://qudt.org/vocab/unit/MicroM",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "test_standard": {
+      "text": "ASTM E 8M-94a",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "temperature": {
+      "value": 650.0,
+      "unit": "°C",
+      "unit_iri": "http://qudt.org/vocab/unit/DEG_C",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "initial_stress": {
+      "value": 625.0,
+      "unit": "Mpa",
+      "unit_iri": "http://qudt.org/vocab/unit/MegaPA",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "creep_rupture_time": {
+      "text": "331.18 ±28.93 h",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "percentage_elongation_after_creep_fracture": {
+      "text": "5.3565 ±0.2678%",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    },
+    "steady_state_creep_rate": {
+      "text": "1.42 ×10−4 ±2.05 ×10−6",
+      "id": "10.1016_j.msea.2008.04.097_HT2"
+    }
+  },
+  {
+    "id": "10.1016_j.msea.2008.04.097_HT3",
+    "doi": "https://doi.org/10.1016/j.msea.2008.04.097",
+    "material_name": {
+      "text": "Inconel 718",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "chemical_composition": {
+      "text": "wt.%: C 0.04, Mn 0.09, Fe 18.64, S 0.0001, Si 0.07, Cu 0.17, Ni 53.09, Cr 18.11, Al 0.53, Ti 0.95, Co 0.21, Mo 3.03, Nb 5.05, Ta 0.01, P 0.009, B 0.003, Pb 0.1 ppm, Bi <0.1 ppm, Se <0.1 ppm, Nb + Ta 5.06",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "sample_id": {
+      "text": "HT3",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "processing_method": {
+      "text": "DUVAC (VIM electrode and VAR ingot) processes",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "solutionizing": {
+      "text": "1095 C, 1 h/AC",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "aging": {
+      "text": "955 C, 3.5 h/AC",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "grain_size": {
+      "value": 155.0,
+      "unit": "μm",
+      "unit_iri": "http://qudt.org/vocab/unit/MicroM",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "test_standard": {
+      "text": "ASTM E 8M-94a",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "temperature": {
+      "value": 650.0,
+      "unit": "°C",
+      "unit_iri": "http://qudt.org/vocab/unit/DEG_C",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "initial_stress": {
+      "value": 625.0,
+      "unit": "Mpa",
+      "unit_iri": "http://qudt.org/vocab/unit/MegaPA",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "creep_rupture_time": {
+      "text": "196.75 ±16.48 h",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "percentage_elongation_after_creep_fracture": {
+      "text": "1.4892 ±0.0745%",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    },
+    "steady_state_creep_rate": {
+      "text": "1.04 ×10−4 ±3.49 ×10−6",
+      "id": "10.1016_j.msea.2008.04.097_HT3"
+    }
+  }
+]

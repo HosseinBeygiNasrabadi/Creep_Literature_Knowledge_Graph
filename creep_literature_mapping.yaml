@@ -1,0 +1,782 @@
+prefixes:
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  msekg: https://nfdi.fiz-karlsruhe.de/matwerk/msekg/
+  cto: https://w3id.org/pmd/cto/
+  tto: https://w3id.org/pmd/tto/
+  co: https://w3id.org/pmd/co/
+  obo: http://purl.obolibrary.org/obo/
+  nfdi: https://nfdi.fiz-karlsruhe.de/ontology/
+  mwo: http://purls.helmholtz-metadaten.de/mwo/
+
+  # ---- Classes: shared entities ----
+  creep_reference_dataset: https://w3id.org/pmd/cto/CTO_0000009
+  creep_testing_process: https://w3id.org/pmd/co/PMD_0000589
+  creep_test_piece: https://w3id.org/pmd/cto/CTO_0000008
+  microstructure: https://w3id.org/pmd/co/PMD_0000857
+  publication: http://purl.obolibrary.org/obo/IAO_0000311
+
+  # ---- Classes: identifiers, descriptions, data items ----
+  digital_object_identifier: https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001037
+  material_identifier: http://purls.helmholtz-metadaten.de/mwo/MWO_0001099
+  object_identifier: http://purls.helmholtz-metadaten.de/mwo/MWO_0001015
+  chemical_composition_data_item: https://w3id.org/pmd/co/PMD_0025002
+  textual_description: https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001018
+  standard: https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0000206
+  scalar_value_specification: http://purl.obolibrary.org/obo/OBI_0001931
+  input_specification: https://w3id.org/pmd/co/PMD_0000014
+  plan: http://purl.obolibrary.org/obo/OBI_0000260
+
+  # ---- Classes: processes ----
+  # TODO: 'manufacturing process' and 'aging process' have no class in
+  # cto.ttl / PMDco yet -- typed as generic BFO process (labeled instances)
+  # until dedicated CTO classes exist.
+  process: http://purl.obolibrary.org/obo/BFO_0000015
+  solutionizing_heat_treatment_process: https://w3id.org/pmd/cto/CTO_0000012
+  loading_process: https://w3id.org/pmd/cto/CTO_0000011
+
+  # ---- Classes: qualities / microstructural entities / temporal regions ----
+  chemical_composition: https://w3id.org/pmd/co/PMD_0000551
+  grain_size: https://w3id.org/pmd/co/PMD_0020243
+  crystallite: https://w3id.org/pmd/co/PMD_0000663
+  volume_proportion: https://w3id.org/pmd/co/PMD_0020104
+  size: https://w3id.org/pmd/co/PMD_0020132
+  delta_precipitate: https://w3id.org/pmd/cto/CTO_0000016
+  gamma_precipitate: https://w3id.org/pmd/cto/CTO_0000017
+  gamma_prime_precipitate: https://w3id.org/pmd/cto/CTO_0000018
+  temperature: https://w3id.org/pmd/co/PMD_0000967
+  mechanical_stress: https://w3id.org/pmd/cto/CTO_1000304
+  stress_rupture_time: https://w3id.org/pmd/cto/CTO_0000013
+  percentage_permanent_elongation: https://w3id.org/pmd/tto/TTO_0000035
+  percentage_elongation_after_creep_fracture: https://w3id.org/pmd/cto/CTO_0000005
+  percentage_reduction_of_area_after_creep_fracture: https://w3id.org/pmd/cto/CTO_3000118
+  percentage_total_extension: https://w3id.org/pmd/cto/CTO_3000011
+  percentage_initial_total_extension: https://w3id.org/pmd/cto/CTO_3000114
+  percentage_elastic_extension: https://w3id.org/pmd/cto/CTO_3000013
+  percentage_initial_plastic_extension: https://w3id.org/pmd/cto/CTO_3000113
+  percentage_plastic_extension: https://w3id.org/pmd/cto/CTO_3000115
+  percentage_creep_extension: https://w3id.org/pmd/cto/CTO_0000010
+  creep_rate: https://w3id.org/pmd/cto/CTO_1000035
+  stress_exponent: https://w3id.org/pmd/cto/CTO_0000014
+  activation_energy: https://w3id.org/pmd/co/PMD_0020162
+
+  # ---- Object properties ----
+  is_specified_output_of: http://purl.obolibrary.org/obo/OBI_0000312
+  has_part: http://purl.obolibrary.org/obo/BFO_0000051
+  part_of: http://purl.obolibrary.org/obo/BFO_0000050
+  participates_in: http://purl.obolibrary.org/obo/RO_0000056
+  denotes: http://purl.obolibrary.org/obo/IAO_0000219
+  is_about: http://purl.obolibrary.org/obo/IAO_0000136
+  quality_of: http://purl.obolibrary.org/obo/RO_0000080
+  quality_is_specified_as: http://purl.obolibrary.org/obo/IAO_0000419
+  preceded_by: http://purl.obolibrary.org/obo/BFO_0000062
+  member_of: http://purl.obolibrary.org/obo/RO_0002350
+  relational_quality_of: https://w3id.org/pmd/co/PMD_0025999
+  is_concretized_as: http://purl.obolibrary.org/obo/RO_0000058
+  intended_to_realize: http://purl.obolibrary.org/obo/COB_0000081
+  changes_quality: https://w3id.org/pmd/co/PMD_0025013
+  realized_in: http://purl.obolibrary.org/obo/BFO_0000054
+  occupies_temporal_region: http://purl.obolibrary.org/obo/BFO_0000199
+  specifies_value_of: http://purl.obolibrary.org/obo/OBI_0001927
+  process_attribute_of: https://w3id.org/pmd/co/PMD_0025006
+
+  # ---- Data properties ----
+  has_specified_numeric_value: http://purl.obolibrary.org/obo/OBI_0001937
+  has_specified_value: http://purl.obolibrary.org/obo/OBI_0002135
+  has_measurement_unit_label: http://purl.obolibrary.org/obo/IAO_0000039
+  has_value: https://w3id.org/pmd/co/PMD_0000006
+
+# creep_transferred.JSON is one array with one object per spreadsheet row
+# (built by xlsm2json.py). Every parameter object carries a redundant 'id'
+# field: subject templates below use $(param.id), so a row where the
+# parameter is absent generates NO triples for that parameter.
+sources:
+  records:
+    access: creep_literature_metadata.JSON
+    referenceFormulation: jsonpath
+    iterator: "$[*]"
+
+mappings:
+  # ######################################################################
+  # SHARED ENTITIES -- one per spreadsheet row
+  # ######################################################################
+
+  creep_reference_dataset:
+    sources: records
+    s: msekg:creep_reference_dataset_$(id)
+    po:
+      - [a, creep_reference_dataset:]
+      - [is_specified_output_of:, msekg:creep_testing_process_$(id)~iri]
+      - [has_part:, msekg:doi_$(id)~iri]
+      - [has_part:, msekg:material_identifier_$(material_name.id)~iri]
+      - [has_part:, msekg:chemical_composition_data_item_$(chemical_composition.id)~iri]
+      - [has_part:, msekg:object_identifier_$(sample_id.id)~iri]
+      - [has_part:, msekg:textual_description_processing_method_$(processing_method.id)~iri]
+      - [has_part:, msekg:textual_description_solutionizing_$(solutionizing.id)~iri]
+      - [has_part:, msekg:textual_description_aging_$(aging.id)~iri]
+      - [has_part:, msekg:value_specification_grain_size_$(grain_size.id)~iri]
+      - [has_part:, msekg:value_specification_delta_precipitate_fraction_$(delta_precipitate_fraction.id)~iri]
+      - [has_part:, msekg:value_specification_delta_precipitate_size_$(delta_precipitate_size.id)~iri]
+      - [has_part:, msekg:value_specification_gamma_precipitate_fraction_$(gamma_precipitate_fraction.id)~iri]
+      - [has_part:, msekg:value_specification_gamma_precipitate_size_$(gamma_precipitate_size.id)~iri]
+      - [has_part:, msekg:value_specification_gamma_prime_precipitate_fraction_$(gamma_prime_precipitate_fraction.id)~iri]
+      - [has_part:, msekg:value_specification_gamma_prime_precipitate_size_$(gamma_prime_precipitate_size.id)~iri]
+      - [has_part:, msekg:standard_$(test_standard.id)~iri]
+      - [has_part:, msekg:input_specification_temperature_$(temperature.id)~iri]
+      - [has_part:, msekg:input_specification_stress_$(initial_stress.id)~iri]
+      - [has_part:, msekg:value_specification_creep_rupture_time_$(creep_rupture_time.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_permanent_elongation_$(percentage_permanent_elongation.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_elongation_after_creep_fracture_$(percentage_elongation_after_creep_fracture.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_reduction_of_area_$(percentage_reduction_of_area.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_total_extension_$(percentage_total_extension.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_initial_total_extension_$(percentage_initial_total_extension.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_elastic_extension_$(percentage_elastic_extension.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_initial_plastic_extension_$(percentage_initial_plastic_extension.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_plastic_extension_$(percentage_plastic_extension.id)~iri]
+      - [has_part:, msekg:value_specification_percentage_creep_extension_$(percentage_creep_extension.id)~iri]
+      - [has_part:, msekg:value_specification_steady_state_creep_rate_$(steady_state_creep_rate.id)~iri]
+      - [has_part:, msekg:value_specification_stress_exponent_$(stress_exponent.id)~iri]
+      - [has_part:, msekg:value_specification_activation_energy_$(activation_energy.id)~iri]
+
+  creep_testing_process:
+    sources: records
+    s: msekg:creep_testing_process_$(id)
+    po:
+      - [a, creep_testing_process:]
+
+  creep_test_piece:
+    sources: records
+    s: msekg:creep_test_piece_$(id)
+    po:
+      - [a, creep_test_piece:]
+      - [participates_in:, msekg:creep_testing_process_$(id)~iri]
+
+  microstructure:
+    sources: records
+    s: msekg:microstructure_$(id)
+    po:
+      - [a, microstructure:]
+      - [part_of:, msekg:creep_test_piece_$(id)~iri]
+
+  # ######################################################################
+  # PARAMETERS -- in the order of mapping_rules.xlsm
+  # ######################################################################
+
+  # ---- Paper DOI ----
+  # 'digital object identifier' denotes some (publication and
+  #   ('is about' some 'creep testing process'))
+  # NOTE: paper_doi is expected on every row (it anchors the row ID).
+  doi:
+    sources: records
+    s: msekg:doi_$(id)
+    po:
+      - [a, digital_object_identifier:]
+      - [denotes:, msekg:publication_$(id)~iri]
+      - [has_value:, $(doi)]
+
+  publication:
+    sources: records
+    s: msekg:publication_$(id)
+    po:
+      - [a, publication:]
+      - [is_about:, msekg:creep_testing_process_$(id)~iri]
+
+  # ---- Material name ----
+  # 'material identifier' denotes some ('creep test piece' and
+  #   ('participates in' some 'creep testing process'))
+  material_identifier:
+    sources: records
+    s: msekg:material_identifier_$(material_name.id)
+    po:
+      - [a, material_identifier:]
+      - [denotes:, msekg:creep_test_piece_$(material_name.id)~iri]
+      - [has_value:, $(material_name.text)]
+
+  # ---- Material chemical composition ----
+  # 'chemical composition data item' and (inverse('quality is specified as')
+  #   some ('chemical composition' and ('quality of' some 'creep test piece')))
+  chemical_composition_data_item:
+    sources: records
+    s: msekg:chemical_composition_data_item_$(chemical_composition.id)
+    po:
+      - [a, chemical_composition_data_item:]
+      - [has_value:, $(chemical_composition.text)]
+
+  quality_chemical_composition:
+    sources: records
+    s: msekg:quality_chemical_composition_$(chemical_composition.id)
+    po:
+      - [a, chemical_composition:]
+      - [quality_of:, msekg:creep_test_piece_$(chemical_composition.id)~iri]
+      - [quality_is_specified_as:, msekg:chemical_composition_data_item_$(chemical_composition.id)~iri]
+
+  # ---- sample ID ----
+  # 'object identifier' denotes some ('creep test piece' ...)
+  object_identifier:
+    sources: records
+    s: msekg:object_identifier_$(sample_id.id)
+    po:
+      - [a, object_identifier:]
+      - [denotes:, msekg:creep_test_piece_$(sample_id.id)~iri]
+      - [has_value:, $(sample_id.text)]
+
+  # ---- Processing method ----
+  # 'textual description' denotes some ('manufacturing process' and
+  #   ('preceded by' some 'creep testing process'))
+  textual_description_processing_method:
+    sources: records
+    s: msekg:textual_description_processing_method_$(processing_method.id)
+    po:
+      - [a, textual_description:]
+      - [rdfs:label, Processing method]
+      - [denotes:, msekg:manufacturing_process_$(processing_method.id)~iri]
+      - [has_value:, $(processing_method.text)]
+
+  manufacturing_process:
+    sources: records
+    s: msekg:manufacturing_process_$(processing_method.id)
+    po:
+      - [a, process:]                       # TODO: replace with a dedicated CTO 'manufacturing process' class
+      - [rdfs:label, manufacturing process]
+      - [preceded_by:, msekg:creep_testing_process_$(processing_method.id)~iri]
+
+  # ---- Solutionizing ----
+  # 'textual description' denotes some ('solutionizing heat treatment process'
+  #   and ('preceded by' some 'creep testing process'))
+  textual_description_solutionizing:
+    sources: records
+    s: msekg:textual_description_solutionizing_$(solutionizing.id)
+    po:
+      - [a, textual_description:]
+      - [rdfs:label, Solutionizing]
+      - [denotes:, msekg:solutionizing_process_$(solutionizing.id)~iri]
+      - [has_value:, $(solutionizing.text)]
+
+  solutionizing_process:
+    sources: records
+    s: msekg:solutionizing_process_$(solutionizing.id)
+    po:
+      - [a, solutionizing_heat_treatment_process:]
+      - [preceded_by:, msekg:creep_testing_process_$(solutionizing.id)~iri]
+
+  # ---- Aging ----
+  # 'textual description' denotes some ('aging process' and
+  #   ('preceded by' some 'creep testing process'))
+  textual_description_aging:
+    sources: records
+    s: msekg:textual_description_aging_$(aging.id)
+    po:
+      - [a, textual_description:]
+      - [rdfs:label, Aging]
+      - [denotes:, msekg:aging_process_$(aging.id)~iri]
+      - [has_value:, $(aging.text)]
+
+  aging_process:
+    sources: records
+    s: msekg:aging_process_$(aging.id)
+    po:
+      - [a, process:]                       # TODO: replace with a dedicated CTO 'aging process' class
+      - [rdfs:label, aging process]
+      - [preceded_by:, msekg:creep_testing_process_$(aging.id)~iri]
+
+  # ---- Grain size ----
+  # svs 'specifies value of' some ('grain size' 'quality of' some (crystallite
+  #   'member of' some (microstructure 'part of' some 'creep test piece')))
+  value_specification_grain_size:
+    sources: records
+    s: msekg:value_specification_grain_size_$(grain_size.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_grain_size_$(grain_size.id)~iri]
+      - [has_specified_numeric_value:, $(grain_size.value), xsd:double]
+      - [has_specified_value:, $(grain_size.text)]
+      - [has_measurement_unit_label:, $(grain_size.unit_iri)~iri]
+
+  quality_grain_size:
+    sources: records
+    s: msekg:quality_grain_size_$(grain_size.id)
+    po:
+      - [a, grain_size:]
+      - [quality_of:, msekg:crystallite_$(grain_size.id)~iri]
+
+  crystallite:
+    sources: records
+    s: msekg:crystallite_$(grain_size.id)
+    po:
+      - [a, crystallite:]
+      - [member_of:, msekg:microstructure_$(grain_size.id)~iri]
+
+  # ---- delta precipitates fraction ----
+  # svs 'specifies value of' some ('volume proportion' 'relational quality of'
+  #   some ('delta precipitate' 'member of' some microstructure))
+  value_specification_delta_precipitate_fraction:
+    sources: records
+    s: msekg:value_specification_delta_precipitate_fraction_$(delta_precipitate_fraction.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_delta_precipitate_fraction_$(delta_precipitate_fraction.id)~iri]
+      - [has_specified_numeric_value:, $(delta_precipitate_fraction.value), xsd:double]
+      - [has_specified_value:, $(delta_precipitate_fraction.text)]
+      - [has_measurement_unit_label:, $(delta_precipitate_fraction.unit_iri)~iri]
+
+  quality_delta_precipitate_fraction:
+    sources: records
+    s: msekg:quality_delta_precipitate_fraction_$(delta_precipitate_fraction.id)
+    po:
+      - [a, volume_proportion:]
+      - [relational_quality_of:, msekg:delta_precipitate_$(delta_precipitate_fraction.id)~iri]
+
+  delta_precipitate_a:
+    sources: records
+    s: msekg:delta_precipitate_$(delta_precipitate_fraction.id)
+    po:
+      - [a, delta_precipitate:]
+      - [member_of:, msekg:microstructure_$(delta_precipitate_fraction.id)~iri]
+
+  # ---- delta precipitates size ----
+  # svs 'specifies value of' some (size 'quality of' some 'delta precipitate')
+  value_specification_delta_precipitate_size:
+    sources: records
+    s: msekg:value_specification_delta_precipitate_size_$(delta_precipitate_size.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_delta_precipitate_size_$(delta_precipitate_size.id)~iri]
+      - [has_specified_numeric_value:, $(delta_precipitate_size.value), xsd:double]
+      - [has_specified_value:, $(delta_precipitate_size.text)]
+      - [has_measurement_unit_label:, $(delta_precipitate_size.unit_iri)~iri]
+
+  quality_delta_precipitate_size:
+    sources: records
+    s: msekg:quality_delta_precipitate_size_$(delta_precipitate_size.id)
+    po:
+      - [a, size:]
+      - [quality_of:, msekg:delta_precipitate_$(delta_precipitate_size.id)~iri]
+
+  delta_precipitate_b:   # same IRI as delta_precipitate_a -- triples merge
+    sources: records
+    s: msekg:delta_precipitate_$(delta_precipitate_size.id)
+    po:
+      - [a, delta_precipitate:]
+      - [member_of:, msekg:microstructure_$(delta_precipitate_size.id)~iri]
+
+  # ---- Gamma precipitates fraction ----
+  value_specification_gamma_precipitate_fraction:
+    sources: records
+    s: msekg:value_specification_gamma_precipitate_fraction_$(gamma_precipitate_fraction.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_gamma_precipitate_fraction_$(gamma_precipitate_fraction.id)~iri]
+      - [has_specified_numeric_value:, $(gamma_precipitate_fraction.value), xsd:double]
+      - [has_specified_value:, $(gamma_precipitate_fraction.text)]
+      - [has_measurement_unit_label:, $(gamma_precipitate_fraction.unit_iri)~iri]
+
+  quality_gamma_precipitate_fraction:
+    sources: records
+    s: msekg:quality_gamma_precipitate_fraction_$(gamma_precipitate_fraction.id)
+    po:
+      - [a, volume_proportion:]
+      - [relational_quality_of:, msekg:gamma_precipitate_$(gamma_precipitate_fraction.id)~iri]
+
+  gamma_precipitate_a:
+    sources: records
+    s: msekg:gamma_precipitate_$(gamma_precipitate_fraction.id)
+    po:
+      - [a, gamma_precipitate:]
+      - [member_of:, msekg:microstructure_$(gamma_precipitate_fraction.id)~iri]
+
+  # ---- Gamma precipitates size ----
+  value_specification_gamma_precipitate_size:
+    sources: records
+    s: msekg:value_specification_gamma_precipitate_size_$(gamma_precipitate_size.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_gamma_precipitate_size_$(gamma_precipitate_size.id)~iri]
+      - [has_specified_numeric_value:, $(gamma_precipitate_size.value), xsd:double]
+      - [has_specified_value:, $(gamma_precipitate_size.text)]
+      - [has_measurement_unit_label:, $(gamma_precipitate_size.unit_iri)~iri]
+
+  quality_gamma_precipitate_size:
+    sources: records
+    s: msekg:quality_gamma_precipitate_size_$(gamma_precipitate_size.id)
+    po:
+      - [a, size:]
+      - [quality_of:, msekg:gamma_precipitate_$(gamma_precipitate_size.id)~iri]
+
+  gamma_precipitate_b:
+    sources: records
+    s: msekg:gamma_precipitate_$(gamma_precipitate_size.id)
+    po:
+      - [a, gamma_precipitate:]
+      - [member_of:, msekg:microstructure_$(gamma_precipitate_size.id)~iri]
+
+  # ---- Gamma prime precipitates fraction ----
+  value_specification_gamma_prime_precipitate_fraction:
+    sources: records
+    s: msekg:value_specification_gamma_prime_precipitate_fraction_$(gamma_prime_precipitate_fraction.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_gamma_prime_precipitate_fraction_$(gamma_prime_precipitate_fraction.id)~iri]
+      - [has_specified_numeric_value:, $(gamma_prime_precipitate_fraction.value), xsd:double]
+      - [has_specified_value:, $(gamma_prime_precipitate_fraction.text)]
+      - [has_measurement_unit_label:, $(gamma_prime_precipitate_fraction.unit_iri)~iri]
+
+  quality_gamma_prime_precipitate_fraction:
+    sources: records
+    s: msekg:quality_gamma_prime_precipitate_fraction_$(gamma_prime_precipitate_fraction.id)
+    po:
+      - [a, volume_proportion:]
+      - [relational_quality_of:, msekg:gamma_prime_precipitate_$(gamma_prime_precipitate_fraction.id)~iri]
+
+  gamma_prime_precipitate_a:
+    sources: records
+    s: msekg:gamma_prime_precipitate_$(gamma_prime_precipitate_fraction.id)
+    po:
+      - [a, gamma_prime_precipitate:]
+      - [member_of:, msekg:microstructure_$(gamma_prime_precipitate_fraction.id)~iri]
+
+  # ---- Gamma prime precipitates size ----
+  value_specification_gamma_prime_precipitate_size:
+    sources: records
+    s: msekg:value_specification_gamma_prime_precipitate_size_$(gamma_prime_precipitate_size.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_gamma_prime_precipitate_size_$(gamma_prime_precipitate_size.id)~iri]
+      - [has_specified_numeric_value:, $(gamma_prime_precipitate_size.value), xsd:double]
+      - [has_specified_value:, $(gamma_prime_precipitate_size.text)]
+      - [has_measurement_unit_label:, $(gamma_prime_precipitate_size.unit_iri)~iri]
+
+  quality_gamma_prime_precipitate_size:
+    sources: records
+    s: msekg:quality_gamma_prime_precipitate_size_$(gamma_prime_precipitate_size.id)
+    po:
+      - [a, size:]
+      - [quality_of:, msekg:gamma_prime_precipitate_$(gamma_prime_precipitate_size.id)~iri]
+
+  gamma_prime_precipitate_b:
+    sources: records
+    s: msekg:gamma_prime_precipitate_$(gamma_prime_precipitate_size.id)
+    po:
+      - [a, gamma_prime_precipitate:]
+      - [member_of:, msekg:microstructure_$(gamma_prime_precipitate_size.id)~iri]
+
+  # ---- Test standard ----
+  # standard 'is concretized as' some (plan and
+  #   (inverse('intended to realize') some 'creep testing process'))
+  standard:
+    sources: records
+    s: msekg:standard_$(test_standard.id)
+    po:
+      - [a, standard:]
+      - [is_concretized_as:, msekg:plan_$(test_standard.id)~iri]
+      - [has_value:, $(test_standard.text)]
+
+  plan:
+    sources: records
+    s: msekg:plan_$(test_standard.id)
+    po:
+      - [a, plan:]
+
+  process_intended_to_realize:   # subject = shared process IRI; triples merge
+    sources: records
+    s: msekg:creep_testing_process_$(test_standard.id)
+    po:
+      - [intended_to_realize:, msekg:plan_$(test_standard.id)~iri]
+
+  # ---- Temperature ----
+  # 'input specification' 'is concretized as' some (temperature and
+  #   (inverse('changes quality') some 'creep testing process'))
+  input_specification_temperature:
+    sources: records
+    s: msekg:input_specification_temperature_$(temperature.id)
+    po:
+      - [a, input_specification:]
+      - [is_concretized_as:, msekg:quality_temperature_$(temperature.id)~iri]
+      - [has_specified_numeric_value:, $(temperature.value), xsd:double]
+      - [has_specified_value:, $(temperature.text)]
+      - [has_measurement_unit_label:, $(temperature.unit_iri)~iri]
+
+  quality_temperature:
+    sources: records
+    s: msekg:quality_temperature_$(temperature.id)
+    po:
+      - [a, temperature:]
+
+  process_changes_quality:   # subject = shared process IRI; triples merge
+    sources: records
+    s: msekg:creep_testing_process_$(temperature.id)
+    po:
+      - [changes_quality:, msekg:quality_temperature_$(temperature.id)~iri]
+
+  # ---- Initial stress ----
+  # 'input specification' 'is concretized as' some ('mechanical stress' and
+  #   ('realized in' some 'creep testing process'))
+  input_specification_stress:
+    sources: records
+    s: msekg:input_specification_stress_$(initial_stress.id)
+    po:
+      - [a, input_specification:]
+      - [is_concretized_as:, msekg:quality_mechanical_stress_$(initial_stress.id)~iri]
+      - [has_specified_numeric_value:, $(initial_stress.value), xsd:double]
+      - [has_specified_value:, $(initial_stress.text)]
+      - [has_measurement_unit_label:, $(initial_stress.unit_iri)~iri]
+
+  quality_mechanical_stress:
+    sources: records
+    s: msekg:quality_mechanical_stress_$(initial_stress.id)
+    po:
+      - [a, mechanical_stress:]
+      - [realized_in:, msekg:creep_testing_process_$(initial_stress.id)~iri]
+
+  # ---- Creep rupture time ----
+  # svs 'specifies value of' some ('stress rupture time' and
+  #   (inverse('occupies temporal region') some ('loading process' and
+  #   ('part of' some 'creep testing process'))))
+  value_specification_creep_rupture_time:
+    sources: records
+    s: msekg:value_specification_creep_rupture_time_$(creep_rupture_time.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:stress_rupture_time_$(creep_rupture_time.id)~iri]
+      - [has_specified_numeric_value:, $(creep_rupture_time.value), xsd:double]
+      - [has_specified_value:, $(creep_rupture_time.text)]
+      - [has_measurement_unit_label:, $(creep_rupture_time.unit_iri)~iri]
+
+  stress_rupture_time:
+    sources: records
+    s: msekg:stress_rupture_time_$(creep_rupture_time.id)
+    po:
+      - [a, stress_rupture_time:]
+
+  loading_process:
+    sources: records
+    s: msekg:loading_process_$(creep_rupture_time.id)
+    po:
+      - [a, loading_process:]
+      - [occupies_temporal_region:, msekg:stress_rupture_time_$(creep_rupture_time.id)~iri]
+      - [part_of:, msekg:creep_testing_process_$(creep_rupture_time.id)~iri]
+
+  # ---- Percentage permanent elongation ----
+  # svs 'specifies value of' some ('percentage permanent elongation' and
+  #   ('realized in' some 'creep testing process'))
+  value_specification_percentage_permanent_elongation:
+    sources: records
+    s: msekg:value_specification_percentage_permanent_elongation_$(percentage_permanent_elongation.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_permanent_elongation_$(percentage_permanent_elongation.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_permanent_elongation.value), xsd:double]
+      - [has_specified_value:, $(percentage_permanent_elongation.text)]
+      - [has_measurement_unit_label:, $(percentage_permanent_elongation.unit_iri)~iri]
+
+  quality_percentage_permanent_elongation:
+    sources: records
+    s: msekg:quality_percentage_permanent_elongation_$(percentage_permanent_elongation.id)
+    po:
+      - [a, percentage_permanent_elongation:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_permanent_elongation.id)~iri]
+
+  # ---- Percentage elongation after creep fracture ----
+  value_specification_percentage_elongation_after_creep_fracture:
+    sources: records
+    s: msekg:value_specification_percentage_elongation_after_creep_fracture_$(percentage_elongation_after_creep_fracture.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_elongation_after_creep_fracture_$(percentage_elongation_after_creep_fracture.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_elongation_after_creep_fracture.value), xsd:double]
+      - [has_specified_value:, $(percentage_elongation_after_creep_fracture.text)]
+      - [has_measurement_unit_label:, $(percentage_elongation_after_creep_fracture.unit_iri)~iri]
+
+  quality_percentage_elongation_after_creep_fracture:
+    sources: records
+    s: msekg:quality_percentage_elongation_after_creep_fracture_$(percentage_elongation_after_creep_fracture.id)
+    po:
+      - [a, percentage_elongation_after_creep_fracture:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_elongation_after_creep_fracture.id)~iri]
+
+  # ---- Percentage reduction of area after creep fracture ----
+  value_specification_percentage_reduction_of_area:
+    sources: records
+    s: msekg:value_specification_percentage_reduction_of_area_$(percentage_reduction_of_area.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_reduction_of_area_$(percentage_reduction_of_area.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_reduction_of_area.value), xsd:double]
+      - [has_specified_value:, $(percentage_reduction_of_area.text)]
+      - [has_measurement_unit_label:, $(percentage_reduction_of_area.unit_iri)~iri]
+
+  quality_percentage_reduction_of_area:
+    sources: records
+    s: msekg:quality_percentage_reduction_of_area_$(percentage_reduction_of_area.id)
+    po:
+      - [a, percentage_reduction_of_area_after_creep_fracture:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_reduction_of_area.id)~iri]
+
+  # ---- Percentage total extension ----
+  value_specification_percentage_total_extension:
+    sources: records
+    s: msekg:value_specification_percentage_total_extension_$(percentage_total_extension.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_total_extension_$(percentage_total_extension.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_total_extension.value), xsd:double]
+      - [has_specified_value:, $(percentage_total_extension.text)]
+      - [has_measurement_unit_label:, $(percentage_total_extension.unit_iri)~iri]
+
+  quality_percentage_total_extension:
+    sources: records
+    s: msekg:quality_percentage_total_extension_$(percentage_total_extension.id)
+    po:
+      - [a, percentage_total_extension:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_total_extension.id)~iri]
+
+  # ---- Percentage initial total extension ----
+  value_specification_percentage_initial_total_extension:
+    sources: records
+    s: msekg:value_specification_percentage_initial_total_extension_$(percentage_initial_total_extension.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_initial_total_extension_$(percentage_initial_total_extension.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_initial_total_extension.value), xsd:double]
+      - [has_specified_value:, $(percentage_initial_total_extension.text)]
+      - [has_measurement_unit_label:, $(percentage_initial_total_extension.unit_iri)~iri]
+
+  quality_percentage_initial_total_extension:
+    sources: records
+    s: msekg:quality_percentage_initial_total_extension_$(percentage_initial_total_extension.id)
+    po:
+      - [a, percentage_initial_total_extension:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_initial_total_extension.id)~iri]
+
+  # ---- Percentage elastic extension ----
+  value_specification_percentage_elastic_extension:
+    sources: records
+    s: msekg:value_specification_percentage_elastic_extension_$(percentage_elastic_extension.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_elastic_extension_$(percentage_elastic_extension.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_elastic_extension.value), xsd:double]
+      - [has_specified_value:, $(percentage_elastic_extension.text)]
+      - [has_measurement_unit_label:, $(percentage_elastic_extension.unit_iri)~iri]
+
+  quality_percentage_elastic_extension:
+    sources: records
+    s: msekg:quality_percentage_elastic_extension_$(percentage_elastic_extension.id)
+    po:
+      - [a, percentage_elastic_extension:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_elastic_extension.id)~iri]
+
+  # ---- Percentage initial plastic extension ----
+  value_specification_percentage_initial_plastic_extension:
+    sources: records
+    s: msekg:value_specification_percentage_initial_plastic_extension_$(percentage_initial_plastic_extension.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_initial_plastic_extension_$(percentage_initial_plastic_extension.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_initial_plastic_extension.value), xsd:double]
+      - [has_specified_value:, $(percentage_initial_plastic_extension.text)]
+      - [has_measurement_unit_label:, $(percentage_initial_plastic_extension.unit_iri)~iri]
+
+  quality_percentage_initial_plastic_extension:
+    sources: records
+    s: msekg:quality_percentage_initial_plastic_extension_$(percentage_initial_plastic_extension.id)
+    po:
+      - [a, percentage_initial_plastic_extension:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_initial_plastic_extension.id)~iri]
+
+  # ---- Percentage plastic extension ----
+  value_specification_percentage_plastic_extension:
+    sources: records
+    s: msekg:value_specification_percentage_plastic_extension_$(percentage_plastic_extension.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_plastic_extension_$(percentage_plastic_extension.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_plastic_extension.value), xsd:double]
+      - [has_specified_value:, $(percentage_plastic_extension.text)]
+      - [has_measurement_unit_label:, $(percentage_plastic_extension.unit_iri)~iri]
+
+  quality_percentage_plastic_extension:
+    sources: records
+    s: msekg:quality_percentage_plastic_extension_$(percentage_plastic_extension.id)
+    po:
+      - [a, percentage_plastic_extension:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_plastic_extension.id)~iri]
+
+  # ---- Percentage creep extension ----
+  value_specification_percentage_creep_extension:
+    sources: records
+    s: msekg:value_specification_percentage_creep_extension_$(percentage_creep_extension.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_percentage_creep_extension_$(percentage_creep_extension.id)~iri]
+      - [has_specified_numeric_value:, $(percentage_creep_extension.value), xsd:double]
+      - [has_specified_value:, $(percentage_creep_extension.text)]
+      - [has_measurement_unit_label:, $(percentage_creep_extension.unit_iri)~iri]
+
+  quality_percentage_creep_extension:
+    sources: records
+    s: msekg:quality_percentage_creep_extension_$(percentage_creep_extension.id)
+    po:
+      - [a, percentage_creep_extension:]
+      - [realized_in:, msekg:creep_testing_process_$(percentage_creep_extension.id)~iri]
+
+  # ---- Steady state creep rate ----
+  # svs 'specifies value of' some ('creep rate' and
+  #   ('process attribute of' some 'creep testing process'))
+  value_specification_steady_state_creep_rate:
+    sources: records
+    s: msekg:value_specification_steady_state_creep_rate_$(steady_state_creep_rate.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_creep_rate_$(steady_state_creep_rate.id)~iri]
+      - [has_specified_numeric_value:, $(steady_state_creep_rate.value), xsd:double]
+      - [has_specified_value:, $(steady_state_creep_rate.text)]
+      - [has_measurement_unit_label:, $(steady_state_creep_rate.unit_iri)~iri]
+
+  quality_creep_rate:
+    sources: records
+    s: msekg:quality_creep_rate_$(steady_state_creep_rate.id)
+    po:
+      - [a, creep_rate:]
+      - [process_attribute_of:, msekg:creep_testing_process_$(steady_state_creep_rate.id)~iri]
+
+  # ---- Stress Exponent (n) ----
+  # svs 'specifies value of' some ('stress exponent' and
+  #   ('realized in' some 'creep testing process'))
+  value_specification_stress_exponent:
+    sources: records
+    s: msekg:value_specification_stress_exponent_$(stress_exponent.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_stress_exponent_$(stress_exponent.id)~iri]
+      - [has_specified_numeric_value:, $(stress_exponent.value), xsd:double]
+      - [has_specified_value:, $(stress_exponent.text)]
+
+  quality_stress_exponent:
+    sources: records
+    s: msekg:quality_stress_exponent_$(stress_exponent.id)
+    po:
+      - [a, stress_exponent:]
+      - [realized_in:, msekg:creep_testing_process_$(stress_exponent.id)~iri]
+
+  # ---- Activation Energy (Qc) ----
+  # svs 'specifies value of' some ('activation energy' and
+  #   ('process attribute of' some 'creep testing process'))
+  value_specification_activation_energy:
+    sources: records
+    s: msekg:value_specification_activation_energy_$(activation_energy.id)
+    po:
+      - [a, scalar_value_specification:]
+      - [specifies_value_of:, msekg:quality_activation_energy_$(activation_energy.id)~iri]
+      - [has_specified_numeric_value:, $(activation_energy.value), xsd:double]
+      - [has_specified_value:, $(activation_energy.text)]
+      - [has_measurement_unit_label:, $(activation_energy.unit_iri)~iri]
+
+  quality_activation_energy:
+    sources: records
+    s: msekg:quality_activation_energy_$(activation_energy.id)
+    po:
+      - [a, activation_energy:]
+      - [process_attribute_of:, msekg:creep_testing_process_$(activation_energy.id)~iri]

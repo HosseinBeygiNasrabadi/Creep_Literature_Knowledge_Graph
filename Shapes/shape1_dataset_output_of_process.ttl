@@ -1,0 +1,18 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix co:  <https://w3id.org/pmd/co/> .
+@prefix cto: <https://w3id.org/pmd/cto/> .
+@prefix :    <https://nfdi.fiz-karlsruhe.de/matwerk/msekg/shapes/> .
+
+### Shape 1: Every creep reference dataset (CTO_0000009) must be the
+### specified output (OBI_0000312) of exactly one creep testing process (PMD_0000589)
+:CreepReferenceDatasetShape
+  a sh:NodeShape ;
+  sh:targetClass cto:CTO_0000009 ;
+  sh:property [
+    sh:path obo:OBI_0000312 ;          # is specified output of
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:class co:PMD_0000589 ;          # creep testing process
+    sh:message "A creep reference dataset must be the specified output of exactly one creep testing process." ;
+  ] .

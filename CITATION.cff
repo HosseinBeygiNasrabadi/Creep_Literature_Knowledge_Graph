@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Creep Literature Knowledge Graph (CreepLitKG)"
+authors:
+  - family-names: Beygi Nasrabadi
+    given-names: Hossein
+    email: hossein.beygi.nasrabadi@fiz-karlsruhe.de
+    affiliation: "FIZ Karlsruhe – Leibniz Institute for Information Infrastructure"
+repository-code: "https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph"
+url: "https://https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph"
+license: CC0-1.0
+version: "1.0.0"
+date-released: "2026-07-20"
+keywords:
+  - knowledge graph
+  - creep
+  - LLM
+  - Literature
+  - ontology
+  - SPARQL

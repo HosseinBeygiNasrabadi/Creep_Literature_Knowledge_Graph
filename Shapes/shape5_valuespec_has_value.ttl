@@ -1,0 +1,14 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix :    <https://nfdi.fiz-karlsruhe.de/matwerk/msekg/shapes/> .
+
+### Shape 5: Every scalar value specification (OBI_0001931) must have
+### has_specified_numeric_value (OBI_0001937) or has_specified_value (OBI_0002135)
+:ValueSpecificationValueShape
+  a sh:NodeShape ;
+  sh:targetClass obo:OBI_0001931 ;
+  sh:or (
+    [ sh:property [ sh:path obo:OBI_0001937 ; sh:minCount 1 ] ]
+    [ sh:property [ sh:path obo:OBI_0002135 ; sh:minCount 1 ] ]
+  ) ;
+  sh:message "A scalar value specification must have has_specified_numeric_value (OBI_0001937) or has_specified_value (OBI_0002135)." .

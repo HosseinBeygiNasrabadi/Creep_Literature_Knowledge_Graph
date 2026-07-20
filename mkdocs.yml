@@ -1,0 +1,74 @@
+site_name: Creep Literature Knowledge Graph (CreepLitKG)
+site_description: >-
+  LLM+Ontology-driven knowledge graph of creep test metadata extracted from
+  scientific literature, built within NFDI-MatWerk.
+site_author: Hossein Beygi Nasrabadi
+site_url: https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/
+repo_url: https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph
+repo_name: Creep_Literature_Knowledge_Graph
+copyright: >-
+  © 2026 Hossein Beygi Nasrabadi, FIZ Karlsruhe – Leibniz Institute for
+  Information Infrastructure · NFDI-MatWerk
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Pipeline: pipeline.md
+  - Data Model & Ontologies: ontology.md
+  - SPARQL Access: sparql.md
+  - About & Citation: about.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+
+extra:
+  version: 1.0.0
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/HosseinBeygiNasrabadi/Creep_Literature_Knowledge_Graph
+    - icon: fontawesome/solid/database
+      link: https://dataportal.material-digital.de/dataset/literature-extracted-creep-data

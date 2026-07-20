@@ -1,0 +1,17 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix co:  <https://w3id.org/pmd/co/> .
+@prefix cto: <https://w3id.org/pmd/cto/> .
+@prefix :    <https://nfdi.fiz-karlsruhe.de/matwerk/msekg/shapes/> .
+
+### Shape 2: Every creep test piece (CTO_0000008) must participate in
+### (RO_0000056) at least one creep testing process (PMD_0000589)
+:CreepTestPieceShape
+  a sh:NodeShape ;
+  sh:targetClass cto:CTO_0000008 ;
+  sh:property [
+    sh:path obo:RO_0000056 ;           # participates in
+    sh:minCount 1 ;
+    sh:class co:PMD_0000589 ;          # creep testing process
+    sh:message "A creep test piece must participate in a creep testing process." ;
+  ] .

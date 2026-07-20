@@ -1,0 +1,464 @@
+@prefix : <http://mapping.example.com/> .
+@prefix activation_energy: <https://w3id.org/pmd/co/PMD_0020162> .
+@prefix changes_quality: <https://w3id.org/pmd/co/PMD_0025013> .
+@prefix chemical_composition: <https://w3id.org/pmd/co/PMD_0000551> .
+@prefix chemical_composition_data_item: <https://w3id.org/pmd/co/PMD_0025002> .
+@prefix co: <https://w3id.org/pmd/co/> .
+@prefix creep_rate: <https://w3id.org/pmd/cto/CTO_1000035> .
+@prefix creep_reference_dataset: <https://w3id.org/pmd/cto/CTO_0000009> .
+@prefix creep_test_piece: <https://w3id.org/pmd/cto/CTO_0000008> .
+@prefix creep_testing_process: <https://w3id.org/pmd/co/PMD_0000589> .
+@prefix crystallite: <https://w3id.org/pmd/co/PMD_0000663> .
+@prefix cto: <https://w3id.org/pmd/cto/> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix delta_precipitate: <https://w3id.org/pmd/cto/CTO_0000016> .
+@prefix denotes: <http://purl.obolibrary.org/obo/IAO_0000219> .
+@prefix digital_object_identifier: <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001037> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gamma_precipitate: <https://w3id.org/pmd/cto/CTO_0000017> .
+@prefix gamma_prime_precipitate: <https://w3id.org/pmd/cto/CTO_0000018> .
+@prefix grain_size: <https://w3id.org/pmd/co/PMD_0020243> .
+@prefix has_measurement_unit_label: <http://purl.obolibrary.org/obo/IAO_0000039> .
+@prefix has_part: <http://purl.obolibrary.org/obo/BFO_0000051> .
+@prefix has_specified_numeric_value: <http://purl.obolibrary.org/obo/OBI_0001937> .
+@prefix has_specified_value: <http://purl.obolibrary.org/obo/OBI_0002135> .
+@prefix has_value: <https://w3id.org/pmd/co/PMD_0000006> .
+@prefix input_specification: <https://w3id.org/pmd/co/PMD_0000014> .
+@prefix intended_to_realize: <http://purl.obolibrary.org/obo/COB_0000081> .
+@prefix is_about: <http://purl.obolibrary.org/obo/IAO_0000136> .
+@prefix is_concretized_as: <http://purl.obolibrary.org/obo/RO_0000058> .
+@prefix is_specified_output_of: <http://purl.obolibrary.org/obo/OBI_0000312> .
+@prefix loading_process: <https://w3id.org/pmd/cto/CTO_0000011> .
+@prefix material_identifier: <http://purls.helmholtz-metadaten.de/mwo/MWO_0001099> .
+@prefix mechanical_stress: <https://w3id.org/pmd/cto/CTO_1000304> .
+@prefix member_of: <http://purl.obolibrary.org/obo/RO_0002350> .
+@prefix microstructure: <https://w3id.org/pmd/co/PMD_0000857> .
+@prefix msekg: <https://nfdi.fiz-karlsruhe.de/matwerk/msekg/> .
+@prefix mwo: <http://purls.helmholtz-metadaten.de/mwo/> .
+@prefix nfdi: <https://nfdi.fiz-karlsruhe.de/ontology/> .
+@prefix object_identifier: <http://purls.helmholtz-metadaten.de/mwo/MWO_0001015> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix occupies_temporal_region: <http://purl.obolibrary.org/obo/BFO_0000199> .
+@prefix part_of: <http://purl.obolibrary.org/obo/BFO_0000050> .
+@prefix participates_in: <http://purl.obolibrary.org/obo/RO_0000056> .
+@prefix percentage_creep_extension: <https://w3id.org/pmd/cto/CTO_0000010> .
+@prefix percentage_elastic_extension: <https://w3id.org/pmd/cto/CTO_3000013> .
+@prefix percentage_elongation_after_creep_fracture: <https://w3id.org/pmd/cto/CTO_0000005> .
+@prefix percentage_initial_plastic_extension: <https://w3id.org/pmd/cto/CTO_3000113> .
+@prefix percentage_initial_total_extension: <https://w3id.org/pmd/cto/CTO_3000114> .
+@prefix percentage_permanent_elongation: <https://w3id.org/pmd/tto/TTO_0000035> .
+@prefix percentage_plastic_extension: <https://w3id.org/pmd/cto/CTO_3000115> .
+@prefix percentage_reduction_of_area_after_creep_fracture: <https://w3id.org/pmd/cto/CTO_3000118> .
+@prefix percentage_total_extension: <https://w3id.org/pmd/cto/CTO_3000011> .
+@prefix plan: <http://purl.obolibrary.org/obo/OBI_0000260> .
+@prefix preceded_by: <http://purl.obolibrary.org/obo/BFO_0000062> .
+@prefix process: <http://purl.obolibrary.org/obo/BFO_0000015> .
+@prefix process_attribute_of: <https://w3id.org/pmd/co/PMD_0025006> .
+@prefix publication: <http://purl.obolibrary.org/obo/IAO_0000311> .
+@prefix quality_is_specified_as: <http://purl.obolibrary.org/obo/IAO_0000419> .
+@prefix quality_of: <http://purl.obolibrary.org/obo/RO_0000080> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix realized_in: <http://purl.obolibrary.org/obo/BFO_0000054> .
+@prefix relational_quality_of: <https://w3id.org/pmd/co/PMD_0025999> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix scalar_value_specification: <http://purl.obolibrary.org/obo/OBI_0001931> .
+@prefix size: <https://w3id.org/pmd/co/PMD_0020132> .
+@prefix solutionizing_heat_treatment_process: <https://w3id.org/pmd/cto/CTO_0000012> .
+@prefix specifies_value_of: <http://purl.obolibrary.org/obo/OBI_0001927> .
+@prefix standard: <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0000206> .
+@prefix stress_exponent: <https://w3id.org/pmd/cto/CTO_0000014> .
+@prefix stress_rupture_time: <https://w3id.org/pmd/cto/CTO_0000013> .
+@prefix temperature: <https://w3id.org/pmd/co/PMD_0000967> .
+@prefix textual_description: <https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001018> .
+@prefix tto: <https://w3id.org/pmd/tto/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix volume_proportion: <https://w3id.org/pmd/co/PMD_0020104> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+msekg:aging_process_10.1016_j.msea.2008.04.097_HT1 a obo:BFO_0000015;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1;
+  rdfs:label "aging process" .
+
+msekg:aging_process_10.1016_j.msea.2008.04.097_HT2 a obo:BFO_0000015;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2;
+  rdfs:label "aging process" .
+
+msekg:aging_process_10.1016_j.msea.2008.04.097_HT3 a obo:BFO_0000015;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3;
+  rdfs:label "aging process" .
+
+msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0025002;
+  co:PMD_0000006 "wt.%: C 0.04, Mn 0.09, Fe 18.64, S 0.0001, Si 0.07, Cu 0.17, Ni 53.09, Cr 18.11, Al 0.53, Ti 0.95, Co 0.21, Mo 3.03, Nb 5.05, Ta 0.01, P 0.009, B 0.003, Pb 0.1 ppm, Bi <0.1 ppm, Se <0.1 ppm, Nb + Ta 5.06" .
+
+msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0025002;
+  co:PMD_0000006 "wt.%: C 0.04, Mn 0.09, Fe 18.64, S 0.0001, Si 0.07, Cu 0.17, Ni 53.09, Cr 18.11, Al 0.53, Ti 0.95, Co 0.21, Mo 3.03, Nb 5.05, Ta 0.01, P 0.009, B 0.003, Pb 0.1 ppm, Bi <0.1 ppm, Se <0.1 ppm, Nb + Ta 5.06" .
+
+msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0025002;
+  co:PMD_0000006 "wt.%: C 0.04, Mn 0.09, Fe 18.64, S 0.0001, Si 0.07, Cu 0.17, Ni 53.09, Cr 18.11, Al 0.53, Ti 0.95, Co 0.21, Mo 3.03, Nb 5.05, Ta 0.01, P 0.009, B 0.003, Pb 0.1 ppm, Bi <0.1 ppm, Se <0.1 ppm, Nb + Ta 5.06" .
+
+msekg:creep_reference_dataset_10.1016_j.msea.2008.04.097_HT1 a cto:CTO_0000009;
+  obo:BFO_0000051 msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT1,
+    msekg:doi_10.1016_j.msea.2008.04.097_HT1, msekg:input_specification_stress_10.1016_j.msea.2008.04.097_HT1,
+    msekg:input_specification_temperature_10.1016_j.msea.2008.04.097_HT1, msekg:material_identifier_10.1016_j.msea.2008.04.097_HT1,
+    msekg:object_identifier_10.1016_j.msea.2008.04.097_HT1, msekg:standard_10.1016_j.msea.2008.04.097_HT1,
+    msekg:textual_description_aging_10.1016_j.msea.2008.04.097_HT1, msekg:textual_description_processing_method_10.1016_j.msea.2008.04.097_HT1,
+    msekg:textual_description_solutionizing_10.1016_j.msea.2008.04.097_HT1, msekg:value_specification_creep_rupture_time_10.1016_j.msea.2008.04.097_HT1,
+    msekg:value_specification_grain_size_10.1016_j.msea.2008.04.097_HT1, msekg:value_specification_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT1,
+    msekg:value_specification_steady_state_creep_rate_10.1016_j.msea.2008.04.097_HT1;
+  obo:OBI_0000312 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:creep_reference_dataset_10.1016_j.msea.2008.04.097_HT2 a cto:CTO_0000009;
+  obo:BFO_0000051 msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT2,
+    msekg:doi_10.1016_j.msea.2008.04.097_HT2, msekg:input_specification_stress_10.1016_j.msea.2008.04.097_HT2,
+    msekg:input_specification_temperature_10.1016_j.msea.2008.04.097_HT2, msekg:material_identifier_10.1016_j.msea.2008.04.097_HT2,
+    msekg:object_identifier_10.1016_j.msea.2008.04.097_HT2, msekg:standard_10.1016_j.msea.2008.04.097_HT2,
+    msekg:textual_description_aging_10.1016_j.msea.2008.04.097_HT2, msekg:textual_description_processing_method_10.1016_j.msea.2008.04.097_HT2,
+    msekg:textual_description_solutionizing_10.1016_j.msea.2008.04.097_HT2, msekg:value_specification_creep_rupture_time_10.1016_j.msea.2008.04.097_HT2,
+    msekg:value_specification_grain_size_10.1016_j.msea.2008.04.097_HT2, msekg:value_specification_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT2,
+    msekg:value_specification_steady_state_creep_rate_10.1016_j.msea.2008.04.097_HT2;
+  obo:OBI_0000312 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:creep_reference_dataset_10.1016_j.msea.2008.04.097_HT3 a cto:CTO_0000009;
+  obo:BFO_0000051 msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT3,
+    msekg:doi_10.1016_j.msea.2008.04.097_HT3, msekg:input_specification_stress_10.1016_j.msea.2008.04.097_HT3,
+    msekg:input_specification_temperature_10.1016_j.msea.2008.04.097_HT3, msekg:material_identifier_10.1016_j.msea.2008.04.097_HT3,
+    msekg:object_identifier_10.1016_j.msea.2008.04.097_HT3, msekg:standard_10.1016_j.msea.2008.04.097_HT3,
+    msekg:textual_description_aging_10.1016_j.msea.2008.04.097_HT3, msekg:textual_description_processing_method_10.1016_j.msea.2008.04.097_HT3,
+    msekg:textual_description_solutionizing_10.1016_j.msea.2008.04.097_HT3, msekg:value_specification_creep_rupture_time_10.1016_j.msea.2008.04.097_HT3,
+    msekg:value_specification_grain_size_10.1016_j.msea.2008.04.097_HT3, msekg:value_specification_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT3,
+    msekg:value_specification_steady_state_creep_rate_10.1016_j.msea.2008.04.097_HT3;
+  obo:OBI_0000312 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT1 a cto:CTO_0000008;
+  obo:RO_0000056 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT2 a cto:CTO_0000008;
+  obo:RO_0000056 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT3 a cto:CTO_0000008;
+  obo:RO_0000056 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0000589;
+  obo:COB_0000081 msekg:plan_10.1016_j.msea.2008.04.097_HT1;
+  co:PMD_0025013 msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0000589;
+  obo:COB_0000081 msekg:plan_10.1016_j.msea.2008.04.097_HT2;
+  co:PMD_0025013 msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0000589;
+  obo:COB_0000081 msekg:plan_10.1016_j.msea.2008.04.097_HT3;
+  co:PMD_0025013 msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:crystallite_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0000663;
+  obo:RO_0002350 msekg:microstructure_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:crystallite_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0000663;
+  obo:RO_0002350 msekg:microstructure_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:crystallite_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0000663;
+  obo:RO_0002350 msekg:microstructure_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:doi_10.1016_j.msea.2008.04.097_HT1 a nfdi:NFDI_0001037;
+  obo:IAO_0000219 msekg:publication_10.1016_j.msea.2008.04.097_HT1;
+  co:PMD_0000006 "https://doi.org/10.1016/j.msea.2008.04.097" .
+
+msekg:doi_10.1016_j.msea.2008.04.097_HT2 a nfdi:NFDI_0001037;
+  obo:IAO_0000219 msekg:publication_10.1016_j.msea.2008.04.097_HT2;
+  co:PMD_0000006 "https://doi.org/10.1016/j.msea.2008.04.097" .
+
+msekg:doi_10.1016_j.msea.2008.04.097_HT3 a nfdi:NFDI_0001037;
+  obo:IAO_0000219 msekg:publication_10.1016_j.msea.2008.04.097_HT3;
+  co:PMD_0000006 "https://doi.org/10.1016/j.msea.2008.04.097" .
+
+msekg:input_specification_stress_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0000014;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/MegaPA>;
+  obo:OBI_0001937 6.25E2;
+  obo:RO_0000058 msekg:quality_mechanical_stress_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:input_specification_stress_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0000014;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/MegaPA>;
+  obo:OBI_0001937 6.25E2;
+  obo:RO_0000058 msekg:quality_mechanical_stress_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:input_specification_stress_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0000014;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/MegaPA>;
+  obo:OBI_0001937 6.25E2;
+  obo:RO_0000058 msekg:quality_mechanical_stress_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:input_specification_temperature_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0000014;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/DEG_C>;
+  obo:OBI_0001937 6.5E2;
+  obo:RO_0000058 msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:input_specification_temperature_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0000014;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/DEG_C>;
+  obo:OBI_0001937 6.5E2;
+  obo:RO_0000058 msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:input_specification_temperature_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0000014;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/DEG_C>;
+  obo:OBI_0001937 6.5E2;
+  obo:RO_0000058 msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:loading_process_10.1016_j.msea.2008.04.097_HT1 a cto:CTO_0000011;
+  obo:BFO_0000050 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1;
+  obo:BFO_0000199 msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:loading_process_10.1016_j.msea.2008.04.097_HT2 a cto:CTO_0000011;
+  obo:BFO_0000050 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2;
+  obo:BFO_0000199 msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:loading_process_10.1016_j.msea.2008.04.097_HT3 a cto:CTO_0000011;
+  obo:BFO_0000050 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3;
+  obo:BFO_0000199 msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:manufacturing_process_10.1016_j.msea.2008.04.097_HT1 a obo:BFO_0000015;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1;
+  rdfs:label "manufacturing process" .
+
+msekg:manufacturing_process_10.1016_j.msea.2008.04.097_HT2 a obo:BFO_0000015;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2;
+  rdfs:label "manufacturing process" .
+
+msekg:manufacturing_process_10.1016_j.msea.2008.04.097_HT3 a obo:BFO_0000015;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3;
+  rdfs:label "manufacturing process" .
+
+msekg:material_identifier_10.1016_j.msea.2008.04.097_HT1 a mwo:MWO_0001099;
+  obo:IAO_0000219 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT1;
+  co:PMD_0000006 "Inconel 718" .
+
+msekg:material_identifier_10.1016_j.msea.2008.04.097_HT2 a mwo:MWO_0001099;
+  obo:IAO_0000219 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT2;
+  co:PMD_0000006 "Inconel 718" .
+
+msekg:material_identifier_10.1016_j.msea.2008.04.097_HT3 a mwo:MWO_0001099;
+  obo:IAO_0000219 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT3;
+  co:PMD_0000006 "Inconel 718" .
+
+msekg:microstructure_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0000857;
+  obo:BFO_0000050 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:microstructure_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0000857;
+  obo:BFO_0000050 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:microstructure_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0000857;
+  obo:BFO_0000050 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:object_identifier_10.1016_j.msea.2008.04.097_HT1 a mwo:MWO_0001015;
+  obo:IAO_0000219 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT1;
+  co:PMD_0000006 "HT1" .
+
+msekg:object_identifier_10.1016_j.msea.2008.04.097_HT2 a mwo:MWO_0001015;
+  obo:IAO_0000219 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT2;
+  co:PMD_0000006 "HT2" .
+
+msekg:object_identifier_10.1016_j.msea.2008.04.097_HT3 a mwo:MWO_0001015;
+  obo:IAO_0000219 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT3;
+  co:PMD_0000006 "HT3" .
+
+msekg:plan_10.1016_j.msea.2008.04.097_HT1 a obo:OBI_0000260 .
+
+msekg:plan_10.1016_j.msea.2008.04.097_HT2 a obo:OBI_0000260 .
+
+msekg:plan_10.1016_j.msea.2008.04.097_HT3 a obo:OBI_0000260 .
+
+msekg:publication_10.1016_j.msea.2008.04.097_HT1 a obo:IAO_0000311;
+  obo:IAO_0000136 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:publication_10.1016_j.msea.2008.04.097_HT2 a obo:IAO_0000311;
+  obo:IAO_0000136 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:publication_10.1016_j.msea.2008.04.097_HT3 a obo:IAO_0000311;
+  obo:IAO_0000136 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:quality_chemical_composition_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0000551;
+  obo:IAO_0000419 msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT1;
+  obo:RO_0000080 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:quality_chemical_composition_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0000551;
+  obo:IAO_0000419 msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT2;
+  obo:RO_0000080 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:quality_chemical_composition_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0000551;
+  obo:IAO_0000419 msekg:chemical_composition_data_item_10.1016_j.msea.2008.04.097_HT3;
+  obo:RO_0000080 msekg:creep_test_piece_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:quality_creep_rate_10.1016_j.msea.2008.04.097_HT1 a cto:CTO_1000035;
+  co:PMD_0025006 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:quality_creep_rate_10.1016_j.msea.2008.04.097_HT2 a cto:CTO_1000035;
+  co:PMD_0025006 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:quality_creep_rate_10.1016_j.msea.2008.04.097_HT3 a cto:CTO_1000035;
+  co:PMD_0025006 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:quality_grain_size_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0020243;
+  obo:RO_0000080 msekg:crystallite_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:quality_grain_size_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0020243;
+  obo:RO_0000080 msekg:crystallite_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:quality_grain_size_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0020243;
+  obo:RO_0000080 msekg:crystallite_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:quality_mechanical_stress_10.1016_j.msea.2008.04.097_HT1 a cto:CTO_1000304;
+  obo:BFO_0000054 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:quality_mechanical_stress_10.1016_j.msea.2008.04.097_HT2 a cto:CTO_1000304;
+  obo:BFO_0000054 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:quality_mechanical_stress_10.1016_j.msea.2008.04.097_HT3 a cto:CTO_1000304;
+  obo:BFO_0000054 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:quality_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT1
+  a cto:CTO_0000005;
+  obo:BFO_0000054 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:quality_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT2
+  a cto:CTO_0000005;
+  obo:BFO_0000054 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:quality_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT3
+  a cto:CTO_0000005;
+  obo:BFO_0000054 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT1 a co:PMD_0000967 .
+
+msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT2 a co:PMD_0000967 .
+
+msekg:quality_temperature_10.1016_j.msea.2008.04.097_HT3 a co:PMD_0000967 .
+
+msekg:solutionizing_process_10.1016_j.msea.2008.04.097_HT1 a cto:CTO_0000012;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT1 .
+
+msekg:solutionizing_process_10.1016_j.msea.2008.04.097_HT2 a cto:CTO_0000012;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT2 .
+
+msekg:solutionizing_process_10.1016_j.msea.2008.04.097_HT3 a cto:CTO_0000012;
+  obo:BFO_0000062 msekg:creep_testing_process_10.1016_j.msea.2008.04.097_HT3 .
+
+msekg:standard_10.1016_j.msea.2008.04.097_HT1 a nfdi:NFDI_0000206;
+  obo:RO_0000058 msekg:plan_10.1016_j.msea.2008.04.097_HT1;
+  co:PMD_0000006 "ASTM E 8M-94a" .
+
+msekg:standard_10.1016_j.msea.2008.04.097_HT2 a nfdi:NFDI_0000206;
+  obo:RO_0000058 msekg:plan_10.1016_j.msea.2008.04.097_HT2;
+  co:PMD_0000006 "ASTM E 8M-94a" .
+
+msekg:standard_10.1016_j.msea.2008.04.097_HT3 a nfdi:NFDI_0000206;
+  obo:RO_0000058 msekg:plan_10.1016_j.msea.2008.04.097_HT3;
+  co:PMD_0000006 "ASTM E 8M-94a" .
+
+msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT1 a cto:CTO_0000013 .
+
+msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT2 a cto:CTO_0000013 .
+
+msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT3 a cto:CTO_0000013 .
+
+msekg:textual_description_aging_10.1016_j.msea.2008.04.097_HT1 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:aging_process_10.1016_j.msea.2008.04.097_HT1;
+  rdfs:label "Aging";
+  co:PMD_0000006 "955 C, 1 h/AC + 720 C, 8 h/FC 57 K/h to 620 C, 8 h/AC" .
+
+msekg:textual_description_aging_10.1016_j.msea.2008.04.097_HT2 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:aging_process_10.1016_j.msea.2008.04.097_HT2;
+  rdfs:label "Aging";
+  co:PMD_0000006 "no aging condition 955 C" .
+
+msekg:textual_description_aging_10.1016_j.msea.2008.04.097_HT3 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:aging_process_10.1016_j.msea.2008.04.097_HT3;
+  rdfs:label "Aging";
+  co:PMD_0000006 "955 C, 3.5 h/AC" .
+
+msekg:textual_description_processing_method_10.1016_j.msea.2008.04.097_HT1 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:manufacturing_process_10.1016_j.msea.2008.04.097_HT1;
+  rdfs:label "Processing method";
+  co:PMD_0000006 "DUVAC (VIM electrode and VAR ingot) processes" .
+
+msekg:textual_description_processing_method_10.1016_j.msea.2008.04.097_HT2 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:manufacturing_process_10.1016_j.msea.2008.04.097_HT2;
+  rdfs:label "Processing method";
+  co:PMD_0000006 "DUVAC (VIM electrode and VAR ingot) processes" .
+
+msekg:textual_description_processing_method_10.1016_j.msea.2008.04.097_HT3 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:manufacturing_process_10.1016_j.msea.2008.04.097_HT3;
+  rdfs:label "Processing method";
+  co:PMD_0000006 "DUVAC (VIM electrode and VAR ingot) processes" .
+
+msekg:textual_description_solutionizing_10.1016_j.msea.2008.04.097_HT1 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:solutionizing_process_10.1016_j.msea.2008.04.097_HT1;
+  rdfs:label "Solutionizing";
+  co:PMD_0000006 "1095 C, 1 h/AC" .
+
+msekg:textual_description_solutionizing_10.1016_j.msea.2008.04.097_HT2 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:solutionizing_process_10.1016_j.msea.2008.04.097_HT2;
+  rdfs:label "Solutionizing";
+  co:PMD_0000006 "1095 C, 1 h/AC" .
+
+msekg:textual_description_solutionizing_10.1016_j.msea.2008.04.097_HT3 a nfdi:NFDI_0001018;
+  obo:IAO_0000219 msekg:solutionizing_process_10.1016_j.msea.2008.04.097_HT3;
+  rdfs:label "Solutionizing";
+  co:PMD_0000006 "1095 C, 1 h/AC" .
+
+msekg:value_specification_creep_rupture_time_10.1016_j.msea.2008.04.097_HT1 a obo:OBI_0001931;
+  obo:OBI_0001927 msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT1;
+  obo:OBI_0002135 "159.74 ±19.18 h" .
+
+msekg:value_specification_creep_rupture_time_10.1016_j.msea.2008.04.097_HT2 a obo:OBI_0001931;
+  obo:OBI_0001927 msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT2;
+  obo:OBI_0002135 "331.18 ±28.93 h" .
+
+msekg:value_specification_creep_rupture_time_10.1016_j.msea.2008.04.097_HT3 a obo:OBI_0001931;
+  obo:OBI_0001927 msekg:stress_rupture_time_10.1016_j.msea.2008.04.097_HT3;
+  obo:OBI_0002135 "196.75 ±16.48 h" .
+
+msekg:value_specification_grain_size_10.1016_j.msea.2008.04.097_HT1 a obo:OBI_0001931;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/MicroM>;
+  obo:OBI_0001927 msekg:quality_grain_size_10.1016_j.msea.2008.04.097_HT1;
+  obo:OBI_0001937 1.7E2 .
+
+msekg:value_specification_grain_size_10.1016_j.msea.2008.04.097_HT2 a obo:OBI_0001931;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/MicroM>;
+  obo:OBI_0001927 msekg:quality_grain_size_10.1016_j.msea.2008.04.097_HT2;
+  obo:OBI_0001937 1.6E2 .
+
+msekg:value_specification_grain_size_10.1016_j.msea.2008.04.097_HT3 a obo:OBI_0001931;
+  obo:IAO_0000039 <http://qudt.org/vocab/unit/MicroM>;
+  obo:OBI_0001927 msekg:quality_grain_size_10.1016_j.msea.2008.04.097_HT3;
+  obo:OBI_0001937 1.55E2 .
+
+msekg:value_specification_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT1
+  a obo:OBI_0001931;
+  obo:OBI_0001927 msekg:quality_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT1;
+  obo:OBI_0002135 "1.1542 ±0.0577%" .
+
+msekg:value_specification_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT2
+  a obo:OBI_0001931;
+  obo:OBI_0001927 msekg:quality_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT2;
+  obo:OBI_0002135 "5.3565 ±0.2678%" .
+
+msekg:value_specification_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT3
+  a obo:OBI_0001931;
+  obo:OBI_0001927 msekg:quality_percentage_elongation_after_creep_fracture_10.1016_j.msea.2008.04.097_HT3;
+  obo:OBI_0002135 "1.4892 ±0.0745%" .
+
+msekg:value_specification_steady_state_creep_rate_10.1016_j.msea.2008.04.097_HT1 a
+    obo:OBI_0001931;
+  obo:OBI_0001927 msekg:quality_creep_rate_10.1016_j.msea.2008.04.097_HT1;
+  obo:OBI_0002135 "0.96 ×10−4 ±5.16×10−6" .
+
+msekg:value_specification_steady_state_creep_rate_10.1016_j.msea.2008.04.097_HT2 a
+    obo:OBI_0001931;
+  obo:OBI_0001927 msekg:quality_creep_rate_10.1016_j.msea.2008.04.097_HT2;
+  obo:OBI_0002135 "1.42 ×10−4 ±2.05 ×10−6" .
+
+msekg:value_specification_steady_state_creep_rate_10.1016_j.msea.2008.04.097_HT3 a
+    obo:OBI_0001931;
+  obo:OBI_0001927 msekg:quality_creep_rate_10.1016_j.msea.2008.04.097_HT3;
+  obo:OBI_0002135 "1.04 ×10−4 ±3.49 ×10−6" .

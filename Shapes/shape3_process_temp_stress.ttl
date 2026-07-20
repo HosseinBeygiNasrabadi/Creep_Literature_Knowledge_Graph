@@ -1,0 +1,27 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix co:  <https://w3id.org/pmd/co/> .
+@prefix cto: <https://w3id.org/pmd/cto/> .
+@prefix :    <https://nfdi.fiz-karlsruhe.de/matwerk/msekg/shapes/> .
+
+### Shape 3: Every creep testing process (PMD_0000589) must have exactly one
+### temperature quality (PMD_0000967, linked via PMD_0025013 "changes quality")
+### and exactly one applied mechanical stress quality (CTO_1000304, linked via
+### the inverse of BFO_0000054 "realized in")
+:CreepTestingProcessShape
+  a sh:NodeShape ;
+  sh:targetClass co:PMD_0000589 ;
+  sh:property [
+    sh:path co:PMD_0025013 ;                       # changes quality
+    sh:qualifiedValueShape [ sh:class co:PMD_0000967 ] ;   # temperature
+    sh:qualifiedMinCount 1 ;
+    sh:qualifiedMaxCount 1 ;
+    sh:message "A creep testing process must change exactly one temperature quality." ;
+  ] ;
+  sh:property [
+    sh:path [ sh:inversePath obo:BFO_0000054 ] ;   # qualities realized in this process
+    sh:qualifiedValueShape [ sh:class cto:CTO_1000304 ] ;  # mechanical stress
+    sh:qualifiedMinCount 1 ;
+    sh:qualifiedMaxCount 1 ;
+    sh:message "A creep testing process must realize exactly one applied mechanical stress quality." ;
+  ] .

@@ -3,26 +3,19 @@
 **Version 1.0.0**
 
 CreepLitKG is an LLM+Ontology-driven pipeline and knowledge graph that converts creep test metadata extracted from scientific literature into ontology-grounded RDF. It makes experimental creep data reported in publications — material identity, chemical composition, heat treatment history, microstructural features, test conditions, and creep results — findable, machine-readable, and queryable through a public SPARQL endpoint, and federates it into the MatWerk Knowledge Graph (MSE-KG).
-
-📖 **Documentation:** https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/
-
-![CreepLitKG pipeline overview](docs/assets/pipeline.png)
+All entities are typed with classes from the **[Creep Testing Ontology (CTO)](https://github.com/HosseinBeygiNasrabadi/creep-testing-ontology)** — derived from *ISO 204:2018 — Metallic materials — Uniaxial creep testing in tension* — and the ontologies it reuses (BFO, RO, IAO, OBI, PMDco, NFDIcore, MWO), with measurement units from QUDT. 
 
 ## Live resources
 
-| Resource | Link |
-|---|---|
-| Documentation site | https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/ |
-| RDF dataset (MaterialDigital Dataportal) | https://dataportal.material-digital.de/dataset/creep_literature_knowledge_graph |
-| SPARQL endpoint | `https://dataportal.material-digital.de/dataset/a5b4edc4-43ef-44ff-a386-5d1f6fbbc439/fuseki/$/sparql` |
-| Guided query UI (Sparklis) | [Open Sparklis on the endpoint](https://dataportal.material-digital.de/sparklis/?title=creep_literature_knowledge_graph&endpoint=https%3A//dataportal.material-digital.de/dataset/a5b4edc4-43ef-44ff-a386-5d1f6fbbc439/fuseki/%24/sparql&entity_lexicon_select=http%3A//www.w3.org/2000/01/rdf-schema%23label&concept_lexicons_select=http%3A//www.w3.org/2000/01/rdf-schema%23label) |
-| Creep Testing Ontology (CTO) | https://github.com/HosseinBeygiNasrabadi/creep-testing-ontology |
+**[Live Deployment](https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/)**
+**[RDF dataset (MaterialDigital Dataportal)])(https://dataportal.material-digital.de/dataset/creep_literature_knowledge_graph)**
+**[Guided query UI (Sparklis)](https://dataportal.material-digital.de/sparklis/?title=creep_literature_knowledge_graph&endpoint=https%3A//dataportal.material-digital.de/dataset/a5b4edc4-43ef-44ff-a386-5d1f6fbbc439/fuseki/%24/sparql&entity_lexicon_select=http%3A//www.w3.org/2000/01/rdf-schema%23label&concept_lexicons_select=http%3A//www.w3.org/2000/01/rdf-schema%23label)**
+**[Creep Testing Ontology (CTO)] (https://github.com/HosseinBeygiNasrabadi/creep-testing-ontology)**
 
 ## Overview
 
 Each dataset in the graph describes one creep test reported in a publication and covers the source publication (DOI), the material (name, chemical composition, sample identifier), the processing and heat treatment history (manufacturing method, solutionizing, aging), microstructural features (grain size, precipitate fractions and sizes), the test conditions (testing standard, temperature, initial stress), and the creep results (stress rupture time, percentage elongation after creep fracture, steady-state creep rate, stress exponent, activation energy, and further ISO 204 extension parameters).
 
-All entities are typed with classes from the **Creep Testing Ontology (CTO)** — derived from *ISO 204:2018 — Metallic materials — Uniaxial creep testing in tension* — and the ontologies it reuses (BFO, RO, IAO, OBI, PMDco, NFDIcore, MWO), with measurement units from QUDT. Instance IRIs are minted in the namespace `https://nfdi.fiz-karlsruhe.de/matwerk/msekg/`.
 
 ## Pipeline
 
@@ -36,6 +29,7 @@ new creep paper
    → public SPARQL endpoint
    → harvested into MatWerk-KG
 ```
+![CreepLitKG pipeline overview](docs/assets/pipeline.png)
 
 The `./map.sh` script runs four steps in one command:
 
@@ -44,7 +38,6 @@ The `./map.sh` script runs four steps in one command:
 3. **`rmlmapper`** — JSON + RML → `creep_literature_rdf.ttl`, with deterministic ID-derived IRIs (idempotent re-runs)
 4. **`pySHACL`** — validation against all shapes in `shapes/`; the script exits non-zero on any violation
 
-See the [Pipeline documentation](https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/pipeline/) for details.
 
 ## Repository structure
 
@@ -71,20 +64,6 @@ See the [Pipeline documentation](https://hosseinbeyginasrabadi.github.io/Creep_L
 ./map.sh my_sheet.xlsm      # or a specific spreadsheet following the same template
 ```
 
-**Query the graph** (example — which materials have been creep tested?):
-
-```sparql
-PREFIX mwo: <http://purls.helmholtz-metadaten.de/mwo/>
-PREFIX co:  <https://w3id.org/pmd/co/>
-
-SELECT DISTINCT ?material WHERE {
-  ?id a mwo:MWO_0001099 ;
-      co:PMD_0000006 ?material .
-}
-```
-
-More ready-to-run competency question queries are in the [SPARQL documentation](https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/sparql/).
-
 ## How to cite
 
 ```bibtex
@@ -99,6 +78,6 @@ More ready-to-run competency question queries are in the [SPARQL documentation](
 
 ## Contact
 
-**Dr. Hossein Beygi Nasrabadi**
+**Hossein Beygi Nasrabadi**
 FIZ Karlsruhe – Leibniz Institute for Information Infrastructure GmbH
 [Hossein.Beygi_Nasrabadi@fiz-Karlsruhe.de](mailto:Hossein.Beygi_Nasrabadi@fiz-Karlsruhe.de)

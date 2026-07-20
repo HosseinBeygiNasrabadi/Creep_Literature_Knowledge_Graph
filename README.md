@@ -30,7 +30,7 @@ All entities are typed with classes from the **[Creep Testing Ontology (CTO)](ht
 
 ```
 new creep paper
-   → LLM4CreepLitKG (LLM extraction, under development) / human extraction
+   → LLM4CreepLitKG 
    → data checked by a human and added to creep_literature_spreadsheet.xlsm
    → ./map.sh  (4-step pipeline)
    → creep_literature_rdf.ttl
@@ -60,7 +60,7 @@ The `./map.sh` script runs four steps in one command:
 ├── cto.ttl                             # Creep Testing Ontology (authoritative IRI source)
 ├── map.sh                              # end-to-end pipeline runner
 ├── shapes/                             # SHACL shapes (shape*.ttl)
-├── LLM4CreepLitKG/                     # LLM-based metadata extraction tool (in progress)
+├── LLM4CreepLitKG/                     # LLM-based metadata extraction tool 
 └── docs/                               # documentation site sources (MkDocs)
 ```
 

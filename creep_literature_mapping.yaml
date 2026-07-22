@@ -12,14 +12,12 @@ prefixes:
   nfdi: https://nfdi.fiz-karlsruhe.de/ontology/
   mwo: http://purls.helmholtz-metadaten.de/mwo/
 
-  # ---- Classes: shared entities ----
+  # ---- Classes ----
   creep_reference_dataset: https://w3id.org/pmd/cto/CTO_0000009
   creep_testing_process: https://w3id.org/pmd/co/PMD_0000589
   creep_test_piece: https://w3id.org/pmd/cto/CTO_0000008
   microstructure: https://w3id.org/pmd/co/PMD_0000857
   publication: http://purl.obolibrary.org/obo/IAO_0000311
-
-  # ---- Classes: identifiers, descriptions, data items ----
   digital_object_identifier: https://nfdi.fiz-karlsruhe.de/ontology/NFDI_0001037
   material_identifier: http://purls.helmholtz-metadaten.de/mwo/MWO_0001099
   object_identifier: http://purls.helmholtz-metadaten.de/mwo/MWO_0001015
@@ -29,16 +27,11 @@ prefixes:
   scalar_value_specification: http://purl.obolibrary.org/obo/OBI_0001931
   input_specification: https://w3id.org/pmd/co/PMD_0000014
   plan: http://purl.obolibrary.org/obo/OBI_0000260
-
-  # ---- Classes: processes ----
-  # TODO: 'manufacturing process' and 'aging process' have no class in
-  # cto.ttl / PMDco yet -- typed as generic BFO process (labeled instances)
-  # until dedicated CTO classes exist.
   process: http://purl.obolibrary.org/obo/BFO_0000015
   solutionizing_heat_treatment_process: https://w3id.org/pmd/cto/CTO_0000012
   loading_process: https://w3id.org/pmd/cto/CTO_0000011
-
-  # ---- Classes: qualities / microstructural entities / temporal regions ----
+  manufacturing_process: https://w3id.org/pmd/co/PMD_0000833
+  aging_process: https://w3id.org/pmd/co/PMD_0000513 
   chemical_composition: https://w3id.org/pmd/co/PMD_0000551
   grain_size: https://w3id.org/pmd/co/PMD_0020243
   crystallite: https://w3id.org/pmd/co/PMD_0000663
@@ -63,6 +56,7 @@ prefixes:
   stress_exponent: https://w3id.org/pmd/cto/CTO_0000014
   activation_energy: https://w3id.org/pmd/co/PMD_0020162
 
+
   # ---- Object properties ----
   is_specified_output_of: http://purl.obolibrary.org/obo/OBI_0000312
   has_part: http://purl.obolibrary.org/obo/BFO_0000051
@@ -83,26 +77,26 @@ prefixes:
   specifies_value_of: http://purl.obolibrary.org/obo/OBI_0001927
   process_attribute_of: https://w3id.org/pmd/co/PMD_0025006
 
+
+
   # ---- Data properties ----
   has_specified_numeric_value: http://purl.obolibrary.org/obo/OBI_0001937
   has_specified_value: http://purl.obolibrary.org/obo/OBI_0002135
   has_measurement_unit_label: http://purl.obolibrary.org/obo/IAO_0000039
   has_value: https://w3id.org/pmd/co/PMD_0000006
 
-# creep_transferred.JSON is one array with one object per spreadsheet row
-# (built by xlsm2json.py). Every parameter object carries a redundant 'id'
-# field: subject templates below use $(param.id), so a row where the
-# parameter is absent generates NO triples for that parameter.
+
+
 sources:
   records:
     access: creep_literature_metadata.JSON
     referenceFormulation: jsonpath
     iterator: "$[*]"
 
+
+
 mappings:
-  # ######################################################################
-  # SHARED ENTITIES -- one per spreadsheet row
-  # ######################################################################
+  # SHARED ENTITIES -- 
 
   creep_reference_dataset:
     sources: records
@@ -161,14 +155,10 @@ mappings:
       - [a, microstructure:]
       - [part_of:, msekg:creep_test_piece_$(id)~iri]
 
-  # ######################################################################
+
   # PARAMETERS -- in the order of mapping_rules.xlsm
-  # ######################################################################
 
   # ---- Paper DOI ----
-  # 'digital object identifier' denotes some (publication and
-  #   ('is about' some 'creep testing process'))
-  # NOTE: paper_doi is expected on every row (it anchors the row ID).
   doi:
     sources: records
     s: msekg:doi_$(id)
@@ -185,8 +175,6 @@ mappings:
       - [is_about:, msekg:creep_testing_process_$(id)~iri]
 
   # ---- Material name ----
-  # 'material identifier' denotes some ('creep test piece' and
-  #   ('participates in' some 'creep testing process'))
   material_identifier:
     sources: records
     s: msekg:material_identifier_$(material_name.id)
@@ -196,8 +184,6 @@ mappings:
       - [has_value:, $(material_name.text)]
 
   # ---- Material chemical composition ----
-  # 'chemical composition data item' and (inverse('quality is specified as')
-  #   some ('chemical composition' and ('quality of' some 'creep test piece')))
   chemical_composition_data_item:
     sources: records
     s: msekg:chemical_composition_data_item_$(chemical_composition.id)
@@ -214,7 +200,6 @@ mappings:
       - [quality_is_specified_as:, msekg:chemical_composition_data_item_$(chemical_composition.id)~iri]
 
   # ---- sample ID ----
-  # 'object identifier' denotes some ('creep test piece' ...)
   object_identifier:
     sources: records
     s: msekg:object_identifier_$(sample_id.id)
@@ -224,8 +209,6 @@ mappings:
       - [has_value:, $(sample_id.text)]
 
   # ---- Processing method ----
-  # 'textual description' denotes some ('manufacturing process' and
-  #   ('preceded by' some 'creep testing process'))
   textual_description_processing_method:
     sources: records
     s: msekg:textual_description_processing_method_$(processing_method.id)
@@ -244,8 +227,6 @@ mappings:
       - [preceded_by:, msekg:creep_testing_process_$(processing_method.id)~iri]
 
   # ---- Solutionizing ----
-  # 'textual description' denotes some ('solutionizing heat treatment process'
-  #   and ('preceded by' some 'creep testing process'))
   textual_description_solutionizing:
     sources: records
     s: msekg:textual_description_solutionizing_$(solutionizing.id)
@@ -263,8 +244,6 @@ mappings:
       - [preceded_by:, msekg:creep_testing_process_$(solutionizing.id)~iri]
 
   # ---- Aging ----
-  # 'textual description' denotes some ('aging process' and
-  #   ('preceded by' some 'creep testing process'))
   textual_description_aging:
     sources: records
     s: msekg:textual_description_aging_$(aging.id)
@@ -283,8 +262,6 @@ mappings:
       - [preceded_by:, msekg:creep_testing_process_$(aging.id)~iri]
 
   # ---- Grain size ----
-  # svs 'specifies value of' some ('grain size' 'quality of' some (crystallite
-  #   'member of' some (microstructure 'part of' some 'creep test piece')))
   value_specification_grain_size:
     sources: records
     s: msekg:value_specification_grain_size_$(grain_size.id)
@@ -310,8 +287,6 @@ mappings:
       - [member_of:, msekg:microstructure_$(grain_size.id)~iri]
 
   # ---- delta precipitates fraction ----
-  # svs 'specifies value of' some ('volume proportion' 'relational quality of'
-  #   some ('delta precipitate' 'member of' some microstructure))
   value_specification_delta_precipitate_fraction:
     sources: records
     s: msekg:value_specification_delta_precipitate_fraction_$(delta_precipitate_fraction.id)
@@ -337,7 +312,6 @@ mappings:
       - [member_of:, msekg:microstructure_$(delta_precipitate_fraction.id)~iri]
 
   # ---- delta precipitates size ----
-  # svs 'specifies value of' some (size 'quality of' some 'delta precipitate')
   value_specification_delta_precipitate_size:
     sources: records
     s: msekg:value_specification_delta_precipitate_size_$(delta_precipitate_size.id)
@@ -463,8 +437,6 @@ mappings:
       - [member_of:, msekg:microstructure_$(gamma_prime_precipitate_size.id)~iri]
 
   # ---- Test standard ----
-  # standard 'is concretized as' some (plan and
-  #   (inverse('intended to realize') some 'creep testing process'))
   standard:
     sources: records
     s: msekg:standard_$(test_standard.id)
@@ -486,8 +458,6 @@ mappings:
       - [intended_to_realize:, msekg:plan_$(test_standard.id)~iri]
 
   # ---- Temperature ----
-  # 'input specification' 'is concretized as' some (temperature and
-  #   (inverse('changes quality') some 'creep testing process'))
   input_specification_temperature:
     sources: records
     s: msekg:input_specification_temperature_$(temperature.id)
@@ -511,8 +481,6 @@ mappings:
       - [changes_quality:, msekg:quality_temperature_$(temperature.id)~iri]
 
   # ---- Initial stress ----
-  # 'input specification' 'is concretized as' some ('mechanical stress' and
-  #   ('realized in' some 'creep testing process'))
   input_specification_stress:
     sources: records
     s: msekg:input_specification_stress_$(initial_stress.id)
@@ -531,9 +499,6 @@ mappings:
       - [realized_in:, msekg:creep_testing_process_$(initial_stress.id)~iri]
 
   # ---- Creep rupture time ----
-  # svs 'specifies value of' some ('stress rupture time' and
-  #   (inverse('occupies temporal region') some ('loading process' and
-  #   ('part of' some 'creep testing process'))))
   value_specification_creep_rupture_time:
     sources: records
     s: msekg:value_specification_creep_rupture_time_$(creep_rupture_time.id)
@@ -559,8 +524,6 @@ mappings:
       - [part_of:, msekg:creep_testing_process_$(creep_rupture_time.id)~iri]
 
   # ---- Percentage permanent elongation ----
-  # svs 'specifies value of' some ('percentage permanent elongation' and
-  #   ('realized in' some 'creep testing process'))
   value_specification_percentage_permanent_elongation:
     sources: records
     s: msekg:value_specification_percentage_permanent_elongation_$(percentage_permanent_elongation.id)
@@ -723,8 +686,6 @@ mappings:
       - [realized_in:, msekg:creep_testing_process_$(percentage_creep_extension.id)~iri]
 
   # ---- Steady state creep rate ----
-  # svs 'specifies value of' some ('creep rate' and
-  #   ('process attribute of' some 'creep testing process'))
   value_specification_steady_state_creep_rate:
     sources: records
     s: msekg:value_specification_steady_state_creep_rate_$(steady_state_creep_rate.id)
@@ -743,8 +704,6 @@ mappings:
       - [process_attribute_of:, msekg:creep_testing_process_$(steady_state_creep_rate.id)~iri]
 
   # ---- Stress Exponent (n) ----
-  # svs 'specifies value of' some ('stress exponent' and
-  #   ('realized in' some 'creep testing process'))
   value_specification_stress_exponent:
     sources: records
     s: msekg:value_specification_stress_exponent_$(stress_exponent.id)
@@ -762,8 +721,6 @@ mappings:
       - [realized_in:, msekg:creep_testing_process_$(stress_exponent.id)~iri]
 
   # ---- Activation Energy (Qc) ----
-  # svs 'specifies value of' some ('activation energy' and
-  #   ('process attribute of' some 'creep testing process'))
   value_specification_activation_energy:
     sources: records
     s: msekg:value_specification_activation_energy_$(activation_energy.id)

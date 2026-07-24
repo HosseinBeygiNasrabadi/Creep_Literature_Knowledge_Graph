@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/about/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/ontology/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/pipeline/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+         <loc>https://hosseinbeyginasrabadi.github.io/Creep_Literature_Knowledge_Graph/sparql/</loc>
+         <lastmod>2026-07-24</lastmod>
+    </url>
+</urlset>

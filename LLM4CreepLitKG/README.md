@@ -10,6 +10,8 @@ schema, output template, and ontology are **not** user-uploadable here — they'
 backend configuration shipped in this folder's `inputs/` directory. The only thing a
 user ever uploads is the source paper(s) to extract from.
 
+## [Live App](https://creep-literature-extraction-b6483f543474.herokuapp.com/)
+
 ## Setup
 
 ```bash
